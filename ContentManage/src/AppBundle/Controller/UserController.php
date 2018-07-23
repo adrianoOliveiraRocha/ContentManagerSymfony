@@ -6,14 +6,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
-class LuckyController extends Controller
+class UserController extends Controller
 {
     /**
      * @Route("/validation")
      */
-    public function numberAction()
+    public function validaAction()
     {
-        $number = random_int(0, 100);
         return new Response('test');
     }
 }
