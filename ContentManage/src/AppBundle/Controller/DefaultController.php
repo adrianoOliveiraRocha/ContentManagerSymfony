@@ -13,7 +13,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
         return $this->render('default/index.html.twig', []);
     }
 
@@ -22,16 +21,23 @@ class DefaultController extends Controller
      */
     public function aboutAction(Request $request)
     {
-        // replace this example code with whatever you need
         return $this->render('default/about.html.twig', []);
     }
 
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/contato", name="contact")
      */
     public function contactAction(Request $request)
     {
-        // replace this example code with whatever you need
         return $this->render('default/contact.html.twig', []);
+    }
+
+    /**
+     * @Route("/login", name="login")
+     */
+    public function loginAction(Request $request)
+    {
+      // $this->addFlash('msg', 'Congratulations, your action succeeded!');
+      return $this->render('accounts/login.html.twig', []);
     }
 }
