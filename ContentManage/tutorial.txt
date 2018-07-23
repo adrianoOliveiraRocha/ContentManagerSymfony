@@ -1,0 +1,3 @@
+Data Base
+create/update database: php bin/console doctrine:schema:update --force
+test: php bin/console doctrine:schema:validate
