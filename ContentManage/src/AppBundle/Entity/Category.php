@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -27,12 +28,12 @@ class Category{
     return $this->id;
   }
 
-  public function setName($id){
-    $this->id = $id;
+  public function setName($name){
+    $this->name = $name;
   }
 
   public function getName(){
-    return $this->id;
+    return $this->name;
   }
 
 }

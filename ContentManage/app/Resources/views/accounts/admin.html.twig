@@ -1,8 +1,15 @@
 {% extends 'accounts/base.html.twig' %}
 
 {% block contentpage %}
-  <h3>We are in admin system</h3>
-  <p>{{ app.session.get('user')['id'] }}</p>
-  <p>{{ app.session.get('user')['email'] }}</p>
-  <p>{{ app.session.get('user')['password'] }}</p>
+<div class="panel panel-default form-central"
+  style="width: 50%; margin-left: auto; margin-right: auto; margin-top: 3%;">
+  <!-- messages -->
+  {% for message in app.flashes('msg') %}
+  <div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ message }}
+  </div>
+  {% endfor %}
+  <!-- end messages -->
+</div>
 {% endblock %}

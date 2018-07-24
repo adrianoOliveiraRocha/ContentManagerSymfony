@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class UserController extends Controller
 {
     /**
-     * @Route("/admin")
+     * @Route("/admin", name="admin")
      */
     public function validaAction(Request $request, Session $session)
     {
@@ -53,6 +53,5 @@ class UserController extends Controller
       $session->remove('user');
       return $this->redirectToRoute('homepage');
     }
-
-
+  
 }
