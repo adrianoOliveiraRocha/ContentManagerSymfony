@@ -19,7 +19,23 @@ class UserController extends Controller
       // $email = $request->query->get('email'); via get
       $email = $request->request->get('email');
       $password = $request->request->get('password');
-      $msg = "I had received the email: " . $email . " and a password: " . $password;
-      return new Response($msg);
+
+      $repository = $this->getDoctrine()->getRepository(User::class);
+      $user = $repository->findOneByEmail($email);
+
+      if ($user) { // this user exists?
+        if ($user->getPassword() == $password) {
+          return $this->render('accounts/admin.html.twig', []);
+        } else {
+          $this->addFlash('msg', 'Senha incorreta!');
+          return $this->redirectToRoute("login");
+        }
+      } else {
+        $this->addFlash('msg', 'Usuário não encontrado!');
+        return $this->redirectToRoute("login");
+      }
+
     }
+
+
 }

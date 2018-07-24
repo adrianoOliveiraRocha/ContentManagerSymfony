@@ -55,7 +55,7 @@ class User {
 		return $this->email;
 	}
 	public function setPassword($password) {
-		$this->password = password_hash ( $senha, PASSWORD_DEFAULT );
+		$this->password = password_hash ( $password, PASSWORD_DEFAULT );
 	}
 	public function getPassword() {
 		return $this->password;

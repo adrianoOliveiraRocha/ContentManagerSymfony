@@ -37,7 +37,8 @@ class DefaultController extends Controller
      */
     public function loginAction(Request $request)
     {
-      // $this->addFlash('msg', 'Congratulations, your action succeeded!');
       return $this->render('accounts/login.html.twig', []);
     }
+
+    
 }
