@@ -18,3 +18,8 @@ remove()
     Deletes an attribute by key.
 clear()
     Clear all attributes.
+
+In template:
+<p>{{ app.session.get('user')['id'] }}</p>
+<p>{{ app.session.get('user')['email'] }}</p>
+<p>{{ app.session.get('user')['password'] }}</p>

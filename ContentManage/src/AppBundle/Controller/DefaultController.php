@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -37,8 +38,16 @@ class DefaultController extends Controller
      */
     public function loginAction(Request $request)
     {
-      return $this->render('accounts/login.html.twig', []);
+
+      $email = $this->get('session')->get('user')['email'];
+
+      if (empty($email)) {
+        return $this->render('accounts/login.html.twig', []);
+      } else {
+        return $this->render('accounts/admin.html.twig');
+      }
+
     }
 
-    
+
 }

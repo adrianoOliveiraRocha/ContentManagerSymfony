@@ -1,7 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'accounts/base.html.twig' %}
 
 {% block contentpage %}
   <h3>We are in admin system</h3>
+  <p>{{ app.session.get('user')['id'] }}</p>
   <p>{{ app.session.get('user')['email'] }}</p>
   <p>{{ app.session.get('user')['password'] }}</p>
 {% endblock %}

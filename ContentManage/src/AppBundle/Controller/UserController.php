@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class UserController extends Controller
 {
     /**
-     * @Route("/validation")
+     * @Route("/admin")
      */
     public function validaAction(Request $request, Session $session)
     {
@@ -27,19 +27,31 @@ class UserController extends Controller
       if ($user) { // this user exists?
         if ($user->getPassword() == $password) { //test the password
           $session->set('user', [
+            'id' => $user->getId(),
             'email' => $user->getEmail(),
             'password' => $user->getPassword(),
           ]);
           return $this->render('accounts/admin.html.twig', []);
+
         } else {
           $this->addFlash('msg', 'Senha incorreta!');
           return $this->redirectToRoute("login");
         }
+
       } else {
         $this->addFlash('msg', 'Usuário não encontrado!');
         return $this->redirectToRoute("login");
       }
 
+    }
+
+    /**
+     * @Route("/logout")
+     */
+    public function logout(Request $request){
+      $session = $this->get('session');
+      $session->remove('user');
+      return $this->redirectToRoute('homepage');
     }
 
 
