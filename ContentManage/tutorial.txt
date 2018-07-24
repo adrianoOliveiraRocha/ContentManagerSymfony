@@ -1,3 +1,20 @@
 Data Base
 create/update database: php bin/console doctrine:schema:update --force
 test: php bin/console doctrine:schema:validate
+
+Session Attributes
+
+set()
+    Sets an attribute by key.
+get()
+    Gets an attribute by key.
+all()
+    Gets all attributes as an array of key => value.
+has()
+    Returns true if the attribute exists.
+replace()
+    Sets multiple attributes at once: takes a keyed array and sets each key => value pair.
+remove()
+    Deletes an attribute by key.
+clear()
+    Clear all attributes.

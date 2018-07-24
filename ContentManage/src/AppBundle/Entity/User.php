@@ -51,7 +51,7 @@ class User {
 			$this->email = $email;
 		}
 	}
-	public function getEmail($email) {
+	public function getEmail() {
 		return $this->email;
 	}
 	public function setPassword($password) {

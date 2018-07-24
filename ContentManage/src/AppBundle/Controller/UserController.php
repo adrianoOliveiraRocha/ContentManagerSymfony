@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\User;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 class UserController extends Controller
@@ -14,7 +15,7 @@ class UserController extends Controller
     /**
      * @Route("/validation")
      */
-    public function validaAction(Request $request)
+    public function validaAction(Request $request, Session $session)
     {
       // $email = $request->query->get('email'); via get
       $email = $request->request->get('email');
@@ -24,7 +25,11 @@ class UserController extends Controller
       $user = $repository->findOneByEmail($email);
 
       if ($user) { // this user exists?
-        if ($user->getPassword() == $password) {
+        if ($user->getPassword() == $password) { //test the password
+          $session->set('user', [
+            'email' => $user->getEmail(),
+            'password' => $user->getPassword(),
+          ]);
           return $this->render('accounts/admin.html.twig', []);
         } else {
           $this->addFlash('msg', 'Senha incorreta!');
