@@ -39,7 +39,7 @@ class CatalogController extends Controller{
   /**
    * @Route("/show_categories", name="show_categories")
    */
-  public function newCategory(Request $request){
+  public function showCategories(Request $request){
     return $this->render('catalog/show_categories.html.twig');
   }
 }

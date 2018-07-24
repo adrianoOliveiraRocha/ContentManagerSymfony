@@ -2,12 +2,60 @@
 <html>
   <head>
     <meta charset="UTF-8"/>
+
     <title>{% block title %}Sistema Gráfica{% endblock %}</title>
-    {% block stylesheets %}
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    {% endblock %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- extra -->
+    <link href="https://rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/images/favicon.ico" rel="icon" type="image/png"/>
+    <link href="https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/54efd87f/lojagrafica/css/fontello.css" rel="stylesheet" style="text.css">
+    <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <script src="https://rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/js/extra.js" type="text/javascript">
+	  </script>
+
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+
+    <!-- DataTable -->
+  	<link rel="stylesheet"
+  	href="https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/css/jquery.dataTables.css">
+
+  	<script src="https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.js"></script>
+
+  	<script src="https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.dataTables.js"></script>
+
+
+  	</script>
+
+    <!-- DataTable -->
+	  <link rel="stylesheet"
+	  href="https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/css/jquery.dataTables.css">
+    <script src="https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.js"></script>
+    <script src="https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.dataTables.js"></script>
+    <!-- End DataTable -->
+
+  	<script type="text/javascript" language="javascript" class="init">
+  	  $(document).ready(function() {
+  	    $('#table').DataTable({
+  	      "language": {
+  	            "lengthMenu": "Exibindo _MENU_ registros por página",
+  	            "zeroRecords": "Nenhum registro encontrado - desculpe",
+  	            "info": "Exibindo a página _PAGE_ de _PAGES_",
+  	            "infoEmpty": "Sem registros disponíveis",
+  	            "infoFiltered": "(filtered from _MAX_ total records)"
+  	        },
+  	        "scrollX": true
+  	    });
+  	  } );
+  	</script>
+    <!-- End DataTable -->
+
   </head>
   <body>
     {% block generalcontent %}
@@ -41,7 +89,7 @@
                 href="/new_category" >
       	        	Nova Categoria
       	        </a>
-      	        <a class="dropdown-item" href="/show_categories">
+        	        <a class="dropdown-item" href="/show_categories">
       	        	Exibir Categorias
       	        </a>
               </div>
@@ -100,16 +148,7 @@
       {% endblock %}
 
 
-      {% block javascripts %}
-      <!-- jQuery library -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-      <!-- Popper JS -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-
-      <!-- Latest compiled JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-      {% endblock %}
   </div>
   {% endblock %}
   </body>
