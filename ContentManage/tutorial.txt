@@ -24,6 +24,11 @@ In template:
 <p>{{ app.session.get('user')['email'] }}</p>
 <p>{{ app.session.get('user')['password'] }}</p>
 
+
+pass variable to path:
+{{ path('edit_category', {'id': category.id, 'name': category.name}) }}
+
+
 example query:
 $query = $this->getDoctrine()->getRepository('WebBundle:Store')
         ->createQueryBuilder('s')
