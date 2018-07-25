@@ -40,7 +40,11 @@ class CatalogController extends Controller{
    * @Route("/show_categories", name="show_categories")
    */
   public function showCategories(Request $request){
-    return $this->render('catalog/show_categories.html.twig');
+    $repository = $this->getDoctrine()->getRepository(Category::class);
+    $categories = $repository->findAll();
+    return $this->render('catalog/show_categories.html.twig', array(
+      'categories' => $categories,
+    ));
   }
 }
 
