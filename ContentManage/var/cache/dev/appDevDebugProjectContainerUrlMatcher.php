@@ -135,14 +135,22 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // show_categories
-        if ('/show_categories' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::showCategories',  '_route' => 'show_categories',);
-        }
+        elseif (0 === strpos($pathinfo, '/s')) {
+            // show_categories
+            if ('/show_categories' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::showCategories',  '_route' => 'show_categories',);
+            }
 
-        // about
-        if ('/sobre' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::aboutAction',  '_route' => 'about',);
+            // show_products
+            if ('/show_products' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::showProducts',  '_route' => 'show_products',);
+            }
+
+            // about
+            if ('/sobre' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::aboutAction',  '_route' => 'about',);
+            }
+
         }
 
         // edit_category

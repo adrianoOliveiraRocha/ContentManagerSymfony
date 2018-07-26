@@ -1,0 +1,44 @@
+{% extends 'accounts/base.html.twig' %}
+
+{% block contentpage %}
+<div class="panel panel-default form-central"
+	style="width: 70%; margin-left: auto; margin-right: auto; margin-top: 3%;">
+	<table id="table" class="display">
+
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Imagem</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in products %}
+			<tr>
+				<td>
+					<a href="#"
+					 title="Editar categoria">
+					{{ product.id }}
+					</a>
+				</td>
+				<td>{{ product.name }}</td>
+				<td><img src="{{ asset('uploads/images/thumb/') }}{{ product.image }}"></td>
+				<td>
+					<a type="button" class="btn btn-danger" style='color: white' 
+						href="#">
+						Deletar
+					</a>
+				</td>
+
+			</tr>
+			{% endfor %}
+
+
+		</tbody>
+	</table>
+	
+
+
+</div>
+{% endblock %}

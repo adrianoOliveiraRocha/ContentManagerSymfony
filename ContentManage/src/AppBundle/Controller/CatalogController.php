@@ -157,6 +157,17 @@ class CatalogController extends Controller{
 
   }
 
+  /**
+   * @Route("/show_products", name="show_products")
+   */
+  public function showProducts(Request $request){
+    $repository = $this->getDoctrine()->getRepository(Product::class);
+    $products = $repository->findAll();
+    return $this->render('catalog/show_products.html.twig', array(
+      'products' => $products,
+    ));
+  }
+
 }
 
 ?>

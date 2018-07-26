@@ -19,7 +19,7 @@ class Utils {
         $date = new \DateTime();
         $fileNameUploaded = $date->getTimestamp() . basename($fileName);
 
-        $uploadPath = 'upload/images/' . $fileNameUploaded;
+        $uploadPath = 'uploads/images/' . $fileNameUploaded;
 
         if (! in_array($fileExtension, $fileExtensions)) {
             $errors[] = "Esse tipo de arquivo não é permitido " .
@@ -35,7 +35,7 @@ class Utils {
             $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
 
             if ($didUpload) {
-                Utils::make_thumb($uploadPath, 'upload/images/', $fileNameUploaded);
+                Utils::make_thumb($uploadPath, 'uploads/images/', $fileNameUploaded);
                 return $fileNameUploaded;
             } else {
                 return false;
