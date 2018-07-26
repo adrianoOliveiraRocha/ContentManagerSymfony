@@ -1,5 +1,6 @@
 <?php
 namespace AppBundle\Utils;
+
 use Intervention\Image\ImageManager;
 
 
@@ -15,10 +16,10 @@ class Utils {
         $fileType = $file['type'];
         $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
 
-        $date = new DateTime();
+        $date = new \DateTime();
         $fileNameUploaded = $date->getTimestamp() . basename($fileName);
 
-        $uploadPath = '../../../web/upload/images/' . $fileNameUploaded;
+        $uploadPath = 'upload/images/' . $fileNameUploaded;
 
         if (! in_array($fileExtension, $fileExtensions)) {
             $errors[] = "Esse tipo de arquivo não é permitido " .
@@ -34,23 +35,13 @@ class Utils {
             $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
 
             if ($didUpload) {
-                $promotion = new Promotion();
-                $promotion->setImage($fileNameUploaded);
-
-                if ($promotion->save()) {
-                    //create thumbnail
-                    $dest = PROMOTION_IMAGES;
-                    Utils::make_thumb($uploadPath, $dest, $fileNameUploaded);
-                        header('location: admin?alert=success');
-                } else {
-                    header('location: admin?alert=error');
-                }
-
+                Utils::make_thumb($uploadPath, 'upload/images/', $fileNameUploaded);
+                return $fileNameUploaded;
             } else {
-                foreach ($errors as $error) {
-                    echo "<div style='color: red;'>{$error}</div> </br>";
-                }
+                return false;
             }
+        } else {
+            echo 'error';
         }
     }
 

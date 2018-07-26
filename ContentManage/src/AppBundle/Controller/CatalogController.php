@@ -125,27 +125,36 @@ class CatalogController extends Controller{
    * @Route("/create_newproduct", name="create_newproduct")
    */
   public function createNewProduct(Request $request){
+    // return new Response($request->request->get('description'));
     $productName = $request->request->get('name');
     $productDescription = $request->request->get('description');
+    
     if ($_FILES['image']) {
       $productImage = $_FILES['image'];
+    
     }
-    $category = $request->request->get('category');
+    $idCategory = $request->request->get('category');
+    $repository = $this->getDoctrine()->getRepository(Category::class);
+    $category = $repository->findOneById($idCategory);
+    
+    $imageName = Utils::uploadImage($productImage);
 
-    return new Response("I can join me code with framework " . 
-      $productImage['name']);
+    $product = new Product();
+    $product->setName($productName);
+    $product->setDescription($productDescription);
+    $product->setCategory($category);
+    $product->setImage($imageName);
 
-    // $category = new Category();
-    // $category->setName($categoryName);
-    // try {
-    //   $entityManager = $this->getDoctrine()->getManager();
-    //   $entityManager->persist($category);
-    //   $entityManager->flush();
-    //   $this->addFlash('msg', 'Categoria salva com sucesso!');
-    //   return $this->render('accounts/admin.html.twig');
-    // } catch (\Exception $e) {
-    //   return new Response($e->getMessage());
-    // }
+    try {
+      $entityManager = $this->getDoctrine()->getManager();
+      $entityManager->persist($product);
+      $entityManager->flush();
+      $this->addFlash('msg', 'Producto salvo com sucesso!');
+      return $this->render('accounts/admin.html.twig');
+    } catch (\Exception $e) {
+      return new Response($e->getMessage());
+    }
+
   }
 
 }

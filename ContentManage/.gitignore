@@ -1,1 +1,3 @@
-
+var/cache/dev/pools/
+var/cache/dev/profiler
+var/sessions/dev

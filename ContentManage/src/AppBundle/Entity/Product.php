@@ -52,7 +52,7 @@ class Product{
   }
 
   public function setDescription($description){
-    $this->id = $description;
+    $this->description = $description;
   }
 
   public function getDescription(){
@@ -65,6 +65,14 @@ class Product{
 
   public function getCategory(){
     return $this->category;
+  }
+
+  public function setImage($image){
+    $this->image = $image;
+  }
+
+  public function getImage(){
+    return $this->image;
   }
 }
 
