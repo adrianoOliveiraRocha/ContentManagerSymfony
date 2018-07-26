@@ -112,14 +112,27 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::newCategory',  '_route' => 'new_category',);
         }
 
-        // create_newcategory
-        if ('/create_newcategory' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::createNewCategory',  '_route' => 'create_newcategory',);
+        // new_product
+        if ('/new_product' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::newProduct',  '_route' => 'new_product',);
         }
 
-        // contact
-        if ('/contato' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::contactAction',  '_route' => 'contact',);
+        if (0 === strpos($pathinfo, '/c')) {
+            // create_newcategory
+            if ('/create_newcategory' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::createNewCategory',  '_route' => 'create_newcategory',);
+            }
+
+            // create_newproduct
+            if ('/create_newproduct' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::createNewProduct',  '_route' => 'create_newproduct',);
+            }
+
+            // contact
+            if ('/contato' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::contactAction',  '_route' => 'contact',);
+            }
+
         }
 
         // show_categories
@@ -140,6 +153,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         // run_edit_category
         if ('/run_edit_category' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::runEditCategoryAction',  '_route' => 'run_edit_category',);
+        }
+
+        // delete_category
+        if ('/delete_category' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::delete_category',  '_route' => 'delete_category',);
         }
 
         // homepage

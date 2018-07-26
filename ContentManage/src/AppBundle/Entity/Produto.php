@@ -30,6 +30,11 @@ class Product{
      */
   private $category;
 
+  /**
+   * @ORM\Column(type="string", length=500)
+   */
+  private $image;
+
   public function setId($id){
     $this->id = $id;
   }

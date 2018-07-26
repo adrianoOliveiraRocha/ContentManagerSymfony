@@ -40,7 +40,7 @@ class DefaultController extends Controller
     {
 
       $email = $this->get('session')->get('user')['email'];
-
+      
       if (empty($email)) {
         return $this->render('accounts/login.html.twig', []);
       } else {

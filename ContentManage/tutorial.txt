@@ -28,17 +28,4 @@ In template:
 pass variable to path:
 {{ path('edit_category', {'id': category.id, 'name': category.name}) }}
 
-
-example query:
-$query = $this->getDoctrine()->getRepository('WebBundle:Store')
-        ->createQueryBuilder('s')
-        ->select('t, COUNT(s) AS counter')
-        ->groupBy('s.town')
-        ->leftJoin('s.owner','o')
-        ->leftJoin('s.town','t')
-        ->where('s.owner = :id')
-        ->orderBy('t.name','ASC')
-        ->setParameter('id', $id)
-        ->getQuery();
-
-      $list = $query->getResult();
+This resolves various errors: sudo apt-get remove php7.2-snmp

@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Product;
+use AppBundle\Utils\Utils;
 
 class CatalogController extends Controller{
   /**
@@ -17,6 +18,7 @@ class CatalogController extends Controller{
   public function newCategory(Request $request){
     return $this->render('catalog/newcategory.html.twig');
   }
+
 
   /**
    * @Route("/create_newcategory", name="create_newcategory")
@@ -36,6 +38,7 @@ class CatalogController extends Controller{
     }
   }
 
+
   /**
    * @Route("/show_categories", name="show_categories")
    */
@@ -46,6 +49,7 @@ class CatalogController extends Controller{
       'categories' => $categories,
     ));
   }
+
 
   /**
    * @Route("/edit_category", name="edit_category")
@@ -59,6 +63,7 @@ class CatalogController extends Controller{
       'name' => $name,
     ));
   }
+
 
   /**
    * @Route("/run_edit_category", name="run_edit_category")
@@ -81,8 +86,68 @@ class CatalogController extends Controller{
       return new Response($e->getMessage());
     }
   }
+
+
+  /**
+   * @Route("/delete_category", name="delete_category")
+   */
+  public function delete_category(Request $request){
+    $id = $request->query->get('id');
+    $repository = $this->getDoctrine()->getRepository(Category::class);
+    $category = $repository->findOneById($id);
+    try {
+      $entityManager = $this->getDoctrine()->getManager();
+      $entityManager->remove($category);
+      $entityManager->flush();
+      $this->addFlash('msg', 'Categoria deletada com sucesso!');
+      return $this->render('accounts/admin.html.twig');
+    } catch (\Exception $e) {
+      return new Response($e->getMessage());
+    }
+    
+  }
+
+
+  /**
+   * @Route("/new_product", name="new_product")
+   */
+  public function newProduct(Request $request){
+    $repository = $this->getDoctrine()->getRepository(Category::class);
+    $categories = $repository->findAll();
+
+    return $this->render('catalog/new_product.html.twig', array(
+      'categories' => $categories,
+    ));
+  }
+
+
+  /**
+   * @Route("/create_newproduct", name="create_newproduct")
+   */
+  public function createNewProduct(Request $request){
+    $productName = $request->request->get('name');
+    $productDescription = $request->request->get('description');
+    if ($_FILES['image']) {
+      $productImage = $_FILES['image'];
+    }
+    $category = $request->request->get('category');
+
+    return new Response("I can join me code with framework " . 
+      $productImage['name']);
+
+    // $category = new Category();
+    // $category->setName($categoryName);
+    // try {
+    //   $entityManager = $this->getDoctrine()->getManager();
+    //   $entityManager->persist($category);
+    //   $entityManager->flush();
+    //   $this->addFlash('msg', 'Categoria salva com sucesso!');
+    //   return $this->render('accounts/admin.html.twig');
+    // } catch (\Exception $e) {
+    //   return new Response($e->getMessage());
+    // }
+  }
+
 }
-
-
 
 ?>
