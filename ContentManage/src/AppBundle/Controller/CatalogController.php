@@ -125,7 +125,7 @@ class CatalogController extends Controller{
    * @Route("/create_newproduct", name="create_newproduct")
    */
   public function createNewProduct(Request $request){
-    // return new Response($request->request->get('description'));
+    
     $productName = $request->request->get('name');
     $productDescription = $request->request->get('description');
     
@@ -187,6 +187,41 @@ class CatalogController extends Controller{
       'categories' => $categories,
       'currentCategory' => $currentCategory,
     ));
+  }
+
+
+  /**
+   * @Route("/run_edit_product", name="run_edit_product")
+   */
+  public function runEditProduct(Request $request){
+    $repositoryP = $this->getDoctrine()->getRepository(Product::class);
+    $id = $request->request->get('id');
+    $product = $repositoryP->findOneById($id);
+    
+    if ($_FILES['image']['name']) {
+      // delete olde images
+      unlink('uploads/images/' . $product->getImage());
+      unlink('uploads/images/thumb/' . $product->getImage());
+      $imageName = Utils::uploadImage($_FILES['image']);
+      $product->setImage($imageName);
+    }
+    // get category
+    $idCategory = $request->request->get('category');
+    $repository = $this->getDoctrine()->getRepository(Category::class);
+    $category = $repository->findOneById($idCategory);
+    
+    $product->setName($request->request->get('name'));
+    $product->setDescription($request->request->get('description'));
+    $product->setCategory($category);
+    
+    try {
+      $entityManager = $this->getDoctrine()->getManager();
+      $entityManager->flush();
+      $this->addFlash('msg', 'As informações do produto foram atualizadas com sucesso!');
+      return $this->render('accounts/admin.html.twig');
+    } catch (\Exception $e) {
+      return new Response($e->getMessage());
+    }
   }
 
 }
