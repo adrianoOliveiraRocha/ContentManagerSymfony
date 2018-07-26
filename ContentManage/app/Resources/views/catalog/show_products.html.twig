@@ -17,8 +17,8 @@
 			{% for product in products %}
 			<tr>
 				<td>
-					<a href="#"
-					 title="Editar categoria">
+					<a href="{{ path('edit_product', {'id': product.id}) }}"
+					 title="Editar produto">
 					{{ product.id }}
 					</a>
 				</td>

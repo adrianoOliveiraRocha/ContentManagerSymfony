@@ -158,6 +158,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editCategoryAction',  '_route' => 'edit_category',);
         }
 
+        // edit_product
+        if ('/edit_product' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editProductAction',  '_route' => 'edit_product',);
+        }
+
         // run_edit_category
         if ('/run_edit_category' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::runEditCategoryAction',  '_route' => 'run_edit_category',);

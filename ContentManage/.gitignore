@@ -1,4 +1,7 @@
-var/cache/dev/pools/
-var/cache/dev/profiler/
-var/sessions/dev/
-var/cache/dev/twig/
+var/cache/dev/pools/*
+var/cache/dev/profiler/*
+var/sessions/dev/*
+var/cache/dev/twig/*
+var/cache/dev/*
+var/logs/dev.log
+

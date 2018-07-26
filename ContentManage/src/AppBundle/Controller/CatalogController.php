@@ -168,6 +168,27 @@ class CatalogController extends Controller{
     ));
   }
 
+
+  /**
+   * @Route("/edit_product", name="edit_product")
+   */
+  public function editProductAction(Request $request){
+    $repositoryP = $this->getDoctrine()->getRepository(Product::class);
+    $id = $request->query->get('id');
+    $product = $repositoryP->findOneById($id);
+
+    $repositoryC = $this->getDoctrine()->getRepository(Category::class);
+    $categories = $repositoryC->findAll();
+    // currect category
+    $currentCategory = $product->getCategory();
+
+    return $this->render('catalog/edit_product.html.twig', array(
+      'product' => $product,
+      'categories' => $categories,
+      'currentCategory' => $currentCategory,
+    ));
+  }
+
 }
 
 ?>
