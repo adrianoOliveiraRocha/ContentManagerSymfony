@@ -96,7 +96,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
     ";
         // line 61
         $this->displayBlock('generalcontent', $context, $blocks);
-        // line 161
+        // line 162
         echo "  </body>
 </html>
 ";
@@ -141,18 +141,18 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
       ";
         // line 64
         $this->displayBlock('menu', $context, $blocks);
-        // line 145
+        // line 146
         echo "      <!-- end menu -->
 
       ";
-        // line 147
+        // line 148
         $this->displayBlock('contentpage', $context, $blocks);
-        // line 150
+        // line 151
         echo "
       ";
-        // line 151
+        // line 152
         $this->displayBlock('footer', $context, $blocks);
-        // line 156
+        // line 157
         echo "
 
 
@@ -254,7 +254,11 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         echo "\" >
         \t        \tNova Promoção
         \t        </a>
-        \t        <a class=\"dropdown-item\" href=\"#\">
+        \t        <a class=\"dropdown-item\" 
+                  href=\"";
+        // line 132
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("show_promotions");
+        echo "\">
         \t        \tExibir Promoções
         \t        </a>
                 </div>
@@ -276,7 +280,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     }
 
-    // line 147
+    // line 148
     public function block_contentpage($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -285,7 +289,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentpage"));
 
-        // line 148
+        // line 149
         echo "
       ";
         
@@ -296,7 +300,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     }
 
-    // line 151
+    // line 152
     public function block_footer($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -305,7 +309,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 152
+        // line 153
         echo "      <footer class=\"fixed-bottom\">
       \tRodapé aqui
       </footer>
@@ -330,7 +334,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     public function getDebugInfo()
     {
-        return array (  309 => 152,  300 => 151,  289 => 148,  280 => 147,  253 => 128,  236 => 114,  229 => 110,  195 => 79,  179 => 65,  170 => 64,  156 => 156,  154 => 151,  151 => 150,  149 => 147,  145 => 145,  143 => 64,  139 => 62,  130 => 61,  112 => 6,  100 => 161,  98 => 61,  56 => 22,  37 => 6,  30 => 1,);
+        return array (  313 => 153,  304 => 152,  293 => 149,  284 => 148,  260 => 132,  253 => 128,  236 => 114,  229 => 110,  195 => 79,  179 => 65,  170 => 64,  156 => 157,  154 => 152,  151 => 151,  149 => 148,  145 => 146,  143 => 64,  139 => 62,  130 => 61,  112 => 6,  100 => 162,  98 => 61,  56 => 22,  37 => 6,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -473,7 +477,8 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
                   href=\"{{ path('new_promotion') }}\" >
         \t        \tNova Promoção
         \t        </a>
-        \t        <a class=\"dropdown-item\" href=\"#\">
+        \t        <a class=\"dropdown-item\" 
+                  href=\"{{ path('show_promotions') }}\">
         \t        \tExibir Promoções
         \t        </a>
                 </div>

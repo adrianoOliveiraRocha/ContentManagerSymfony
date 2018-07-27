@@ -143,7 +143,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        elseif (0 === strpos($pathinfo, '/s')) {
+        elseif (0 === strpos($pathinfo, '/show_')) {
             // show_categories
             if ('/show_categories' === $pathinfo) {
                 return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::showCategories',  '_route' => 'show_categories',);
@@ -154,21 +154,34 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::showProducts',  '_route' => 'show_products',);
             }
 
-            // about
-            if ('/sobre' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::aboutAction',  '_route' => 'about',);
+            // show_promotions
+            if ('/show_promotions' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::showPromotions',  '_route' => 'show_promotions',);
             }
 
         }
 
-        // edit_category
-        if ('/edit_category' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editCategoryAction',  '_route' => 'edit_category',);
+        // about
+        if ('/sobre' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::aboutAction',  '_route' => 'about',);
         }
 
-        // edit_product
-        if ('/edit_product' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editProductAction',  '_route' => 'edit_product',);
+        if (0 === strpos($pathinfo, '/edit_')) {
+            // edit_category
+            if ('/edit_category' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editCategoryAction',  '_route' => 'edit_category',);
+            }
+
+            // edit_product
+            if ('/edit_product' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editProductAction',  '_route' => 'edit_product',);
+            }
+
+            // edit_promotion
+            if ('/edit_promotion' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editPromotion',  '_route' => 'edit_promotion',);
+            }
+
         }
 
         // run_edit_category
@@ -181,14 +194,22 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::runEditProduct',  '_route' => 'run_edit_product',);
         }
 
-        // delete_category
-        if ('/delete_category' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::delete_category',  '_route' => 'delete_category',);
-        }
+        if (0 === strpos($pathinfo, '/delete_')) {
+            // delete_category
+            if ('/delete_category' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::delete_category',  '_route' => 'delete_category',);
+            }
 
-        // delete_product
-        if ('/delete_product' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::deleteProduct',  '_route' => 'delete_product',);
+            // delete_product
+            if ('/delete_product' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::deleteProduct',  '_route' => 'delete_product',);
+            }
+
+            // delete_promotion
+            if ('/delete_promotion' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::deletePromotion',  '_route' => 'delete_promotion',);
+            }
+
         }
 
         // homepage

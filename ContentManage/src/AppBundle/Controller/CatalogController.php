@@ -269,7 +269,74 @@ class CatalogController extends Controller{
     } else {
       return $this->render('catalog/new_promotion.html.twig');
     }
+
+  }
+
+    /**
+   * @Route("/show_promotions", name="show_promotions")
+   */
+  public function showPromotions(Request $request){
+    $repository = $this->getDoctrine()->getRepository(Promotion::class);
+    $promotions = $repository->findAll();
+    return $this->render('catalog/show_promotions.html.twig', array(
+      'promotions' => $promotions,
+    ));
+  }
+
+  /**
+   * @Route("/edit_promotion", name="edit_promotion")
+   */
+  public function editPromotion(Request $request){
+
+    $repository = $this->getDoctrine()->getRepository(Promotion::class);
+    $promotion = $repository->findOneById($_GET['id']);
     
+    if (isset($_POST['edit'])) {
+                  
+      if ($_FILES['image']['name']) { // update image
+        // delete old images
+        unlink('uploads/images/' . $promotion->getImage());
+        unlink('uploads/images/thumb/' . $promotion->getImage());
+        $imageName = Utils::uploadImage($_FILES['image']);
+        $promotion->setImage($imageName);
+      }
+      $promotion->setDescription($_POST['description']);
+          
+      try {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+        $this->addFlash('msg', 'As informações da promoção foram atualizadas com sucesso!');
+        return $this->render('accounts/admin.html.twig');
+        } catch (\Exception $e) {
+          return new Response($e->getMessage());
+        }
+    } else {
+      return $this->render('catalog/edit_promotion.html.twig', array(
+        'promotion' => $promotion,
+      ));
+    }
+    
+  }
+
+  /**
+  * @Route("/delete_promotion", name="delete_promotion")
+  */
+  public function deletePromotion(Request $request) {
+    $repository = $this->getDoctrine()->getRepository(Promotion::class);
+    $promotion = $repository->findOneById($_GET['id']);
+    unlink('uploads/images/' . $promotion->getImage());
+    unlink('uploads/images/thumb/' . $promotion->getImage());
+
+    try {
+      $entityManager = $this->getDoctrine()->getManager();
+      $entityManager->remove($promotion);
+      $entityManager->flush();
+      $this->addFlash('msg', 'Promoção deletada com sucesso!');
+      return $this->render('accounts/admin.html.twig');
+    } catch (\Exception $e) {
+      return new Response($e->getMessage());
+    }
+
   }
 
 }
