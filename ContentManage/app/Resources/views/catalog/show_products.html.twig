@@ -18,15 +18,15 @@
 			<tr>
 				<td>
 					<a href="{{ path('edit_product', {'id': product.id}) }}"
-					 title="Editar produto">
+					 title="Detalhes">
 					{{ product.id }}
 					</a>
 				</td>
 				<td>{{ product.name }}</td>
 				<td><img src="{{ asset('uploads/images/thumb/') }}{{ product.image }}"></td>
 				<td>
-					<a type="button" class="btn btn-danger" style='color: white' 
-						href="#">
+					<a class="btn btn-danger" style='color: white' 
+						href="{{ path('delete_product', {'id': product.id}) }}">
 						Deletar
 					</a>
 				</td>

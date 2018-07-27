@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\Promotion;
 use AppBundle\Utils\Utils;
 
 class CatalogController extends Controller{
@@ -222,6 +223,53 @@ class CatalogController extends Controller{
     } catch (\Exception $e) {
       return new Response($e->getMessage());
     }
+  }
+
+  /**
+   * @Route("/delete_product", name="delete_product")
+   */
+  public function deleteProduct(Request $request){
+    $repositoryP = $this->getDoctrine()->getRepository(Product::class);
+    $id = $request->query->get('id');
+    $product = $repositoryP->findOneById($id);
+    
+    try {
+      $entityManager = $this->getDoctrine()->getManager();
+      $entityManager->remove($product);
+      $entityManager->flush();
+      $this->addFlash('msg', 'Produto deletado com sucesso!');
+      return $this->render('accounts/admin.html.twig');
+    } catch (\Exception $e) {
+      return new Response($e->getMessage());
+    }
+  }
+
+  /**
+   * @Route("/new_promotion", name="new_promotion")
+   */
+  public function newPromotion(Request $request){
+    if (isset($_POST['save'])) {
+      $imageName = Utils::uploadImage($_FILES['image']);
+
+      $promotion = new Promotion();
+      $promotion->setDescription($_POST['description']);
+      $promotion->setImage($imageName);
+      
+      try {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($promotion);
+        $entityManager->flush();
+        $this->addFlash('msg', 'Promoção salva com sucesso!');
+        return $this->render('accounts/admin.html.twig');
+      } catch (\Exception $e) {
+        return new Response($e->getMessage());
+      }
+
+      return new Response($image['name']);
+    } else {
+      return $this->render('catalog/new_promotion.html.twig');
+    }
+    
   }
 
 }

@@ -107,17 +107,25 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // new_category
-        if ('/new_category' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::newCategory',  '_route' => 'new_category',);
+        elseif (0 === strpos($pathinfo, '/new_')) {
+            // new_category
+            if ('/new_category' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::newCategory',  '_route' => 'new_category',);
+            }
+
+            // new_product
+            if ('/new_product' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::newProduct',  '_route' => 'new_product',);
+            }
+
+            // new_promotion
+            if ('/new_promotion' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::newPromotion',  '_route' => 'new_promotion',);
+            }
+
         }
 
-        // new_product
-        if ('/new_product' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::newProduct',  '_route' => 'new_product',);
-        }
-
-        if (0 === strpos($pathinfo, '/c')) {
+        elseif (0 === strpos($pathinfo, '/c')) {
             // create_newcategory
             if ('/create_newcategory' === $pathinfo) {
                 return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::createNewCategory',  '_route' => 'create_newcategory',);
@@ -176,6 +184,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         // delete_category
         if ('/delete_category' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::delete_category',  '_route' => 'delete_category',);
+        }
+
+        // delete_product
+        if ('/delete_product' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::deleteProduct',  '_route' => 'delete_product',);
         }
 
         // homepage
