@@ -56,5 +56,51 @@ class UserController extends Controller
       $session->remove('user');
       return $this->redirectToRoute('homepage');
     }
+
+    /**
+     * @Route("/my_data", name="my_data")
+     */
+    public function myData(Request $request, Session $session){
+
+      if (isset($_POST['edit'])) {
+
+        $id = $this->get('session')->get('user')['id'];
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $user = $repository->findOneById($id);
+        
+        if ($_POST['email']) {
+          if ($user->getEmail() != $_POST['email']) {
+            $user->setEmail($_POST['email']);
+          }
+        }
+
+        if ($_POST['password']) {
+          if ($user->getPassword() != $_POST['password']) {
+            $user->setPassword($_POST['password']);
+          }
+        }
+
+        try {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+            
+            $session->set('user', [
+              'id' => $user->getId(),
+              'email' => $user->getEmail(),
+              'password' => $user->getPassword(),
+            ]);
+
+            $this->addFlash('msg', 'Informações atualizadas com sucesso!');
+            return $this->render('accounts/admin.html.twig');
+
+          } catch (\Exception $e) {
+            return new Response($e->getMessage());
+          }
+
+      } else {
+        return $this->render('accounts/my_data.html.twig');  
+      }
+      
+    }
   
 }

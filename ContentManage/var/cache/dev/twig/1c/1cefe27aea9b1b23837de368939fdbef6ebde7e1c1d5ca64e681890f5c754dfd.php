@@ -96,7 +96,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
     ";
         // line 61
         $this->displayBlock('generalcontent', $context, $blocks);
-        // line 162
+        // line 165
         echo "  </body>
 </html>
 ";
@@ -141,18 +141,18 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
       ";
         // line 64
         $this->displayBlock('menu', $context, $blocks);
-        // line 146
+        // line 149
         echo "      <!-- end menu -->
 
       ";
-        // line 148
-        $this->displayBlock('contentpage', $context, $blocks);
         // line 151
+        $this->displayBlock('contentpage', $context, $blocks);
+        // line 154
         echo "
       ";
-        // line 152
+        // line 155
         $this->displayBlock('footer', $context, $blocks);
-        // line 157
+        // line 160
         echo "
 
 
@@ -189,16 +189,19 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
        <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">
          <ul class=\"navbar-nav\">
 
-            <li class=\"nav-item\">
+          <li class=\"nav-item\">
              <a class=\"nav-link\" href=\"";
         // line 79
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("my_data");
+        echo "\">Minha Conta</a>
+          </li>
+
+          <li class=\"nav-item\">
+             <a class=\"nav-link\" href=\"";
+        // line 83
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin");
         echo "\">Home</a>
-           </li>
-
-           <li class=\"nav-item\">
-             <a class=\"nav-link\" href=\"/\">Ir para o site</a>
-           </li>
+          </li>
 
            <li class=\"nav-item dropdown\">
       \t      <a class=\"nav-link dropdown-toggle\" href=\"#\"
@@ -264,10 +267,13 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
                 </div>
               </li>
 
+          <li class=\"nav-item\">
+             <a class=\"nav-link\" href=\"/\">Ir para o site</a>
+          </li>
 
-           <li class=\"nav-item\">
-             <a class=\"nav-link\" href=\"/logout\">Sair</a>
-           </li>
+          <li class=\"nav-item\">
+            <a class=\"nav-link\" href=\"/logout\">Sair</a>
+          </li>
          </ul>
        </div>
       </nav>
@@ -280,7 +286,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     }
 
-    // line 148
+    // line 151
     public function block_contentpage($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -289,7 +295,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentpage"));
 
-        // line 149
+        // line 152
         echo "
       ";
         
@@ -300,7 +306,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     }
 
-    // line 152
+    // line 155
     public function block_footer($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -309,7 +315,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 153
+        // line 156
         echo "      <footer class=\"fixed-bottom\">
       \tRodapé aqui
       </footer>
@@ -334,7 +340,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     public function getDebugInfo()
     {
-        return array (  313 => 153,  304 => 152,  293 => 149,  284 => 148,  260 => 132,  253 => 128,  236 => 114,  229 => 110,  195 => 79,  179 => 65,  170 => 64,  156 => 157,  154 => 152,  151 => 151,  149 => 148,  145 => 146,  143 => 64,  139 => 62,  130 => 61,  112 => 6,  100 => 162,  98 => 61,  56 => 22,  37 => 6,  30 => 1,);
+        return array (  319 => 156,  310 => 155,  299 => 152,  290 => 151,  263 => 132,  256 => 128,  239 => 114,  232 => 110,  202 => 83,  195 => 79,  179 => 65,  170 => 64,  156 => 160,  154 => 155,  151 => 154,  149 => 151,  145 => 149,  143 => 64,  139 => 62,  130 => 61,  112 => 6,  100 => 165,  98 => 61,  56 => 22,  37 => 6,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -424,13 +430,13 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
        <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">
          <ul class=\"navbar-nav\">
 
-            <li class=\"nav-item\">
-             <a class=\"nav-link\" href=\"{{ path('admin') }}\">Home</a>
-           </li>
+          <li class=\"nav-item\">
+             <a class=\"nav-link\" href=\"{{ path('my_data') }}\">Minha Conta</a>
+          </li>
 
-           <li class=\"nav-item\">
-             <a class=\"nav-link\" href=\"/\">Ir para o site</a>
-           </li>
+          <li class=\"nav-item\">
+             <a class=\"nav-link\" href=\"{{ path('admin') }}\">Home</a>
+          </li>
 
            <li class=\"nav-item dropdown\">
       \t      <a class=\"nav-link dropdown-toggle\" href=\"#\"
@@ -484,10 +490,13 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
                 </div>
               </li>
 
+          <li class=\"nav-item\">
+             <a class=\"nav-link\" href=\"/\">Ir para o site</a>
+          </li>
 
-           <li class=\"nav-item\">
-             <a class=\"nav-link\" href=\"/logout\">Sair</a>
-           </li>
+          <li class=\"nav-item\">
+            <a class=\"nav-link\" href=\"/logout\">Sair</a>
+          </li>
          </ul>
        </div>
       </nav>

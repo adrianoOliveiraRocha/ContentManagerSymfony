@@ -1,0 +1,40 @@
+{% extends 'accounts/base.html.twig' %}
+
+{% block contentpage %}
+
+  <div class="panel panel-default form-central"
+    style="width: 50%; margin-left: auto; margin-right: auto; margin-top: 3%;">
+
+    <!-- messages -->
+    {% for message in app.flashes('msg') %}
+    <div class="alert alert-warning alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    <!-- end messages -->
+
+    <div class="container">
+      <h2>Login</h2>
+      <form action="{{ path('my_data') }}" method="post">
+        <input type="hidden" name="id" 
+        value="{{ app.session.get('user')['id'] }}">
+        <input type="hidden" name="edit">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" name='email' class="form-control" 
+          value="{{ app.session.get('user')['email'] }}" 
+          placeholder="Digite seu email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Senha:</label>
+          <input type="password" class="form-control"
+          placeholder="Digite sua senha" name="password"
+          value="{{ app.session.get('user')['password'] }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Editar</button>
+      </form>
+    </div>
+
+  </div>
+{% endblock %}

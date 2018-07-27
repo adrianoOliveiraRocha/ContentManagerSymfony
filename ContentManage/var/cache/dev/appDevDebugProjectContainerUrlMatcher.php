@@ -242,6 +242,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\UserController::validaAction',  '_route' => 'admin',);
         }
 
+        // my_data
+        if ('/my_data' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\UserController::myData',  '_route' => 'my_data',);
+        }
+
         if ('/' === $pathinfo && !$allow) {
             throw new Symfony\Component\Routing\Exception\NoConfigurationException();
         }
