@@ -324,6 +324,7 @@ class CatalogController extends Controller{
   public function deletePromotion(Request $request) {
     $repository = $this->getDoctrine()->getRepository(Promotion::class);
     $promotion = $repository->findOneById($_GET['id']);
+    // delete images
     unlink('uploads/images/' . $promotion->getImage());
     unlink('uploads/images/thumb/' . $promotion->getImage());
 
