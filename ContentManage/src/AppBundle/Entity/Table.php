@@ -4,9 +4,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="promotion")
+ * @ORM\Table(name="table")
  */
-class Promotion{
+class Table{
 
   /**
    * @ORM\Column(type="integer")
@@ -16,7 +16,7 @@ class Promotion{
   private $id;
 
   /**
-   * @ORM\Column(type="text", length=800, nullable=true)
+   * @ORM\Column(type="string", length=500, nullable=true)
    */
   private $description;
 

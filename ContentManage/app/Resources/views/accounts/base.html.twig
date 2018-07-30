@@ -80,7 +80,7 @@
           </li>
 
           <li class="nav-item">
-             <a class="nav-link" href="{{ path('admin') }}">Home</a>
+             <a class="nav-link" href="{{ path('home') }}">Home</a>
           </li>
 
            <li class="nav-item dropdown">
@@ -132,6 +132,23 @@
                   href="{{ path('show_promotions') }}">
         	        	Exibir Promoções
         	        </a>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#"
+                id="navbardrop" data-toggle="dropdown">
+                  Tabela
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" 
+                  href="{{ path('new_table') }}" >
+                    Nova Tabela
+                  </a>
+                  <a class="dropdown-item" 
+                  href="#">
+                    Exibir Tabelas
+                  </a>
                 </div>
               </li>
 

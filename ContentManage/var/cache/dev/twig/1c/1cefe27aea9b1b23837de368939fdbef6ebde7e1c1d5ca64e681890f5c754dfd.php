@@ -96,7 +96,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
     ";
         // line 61
         $this->displayBlock('generalcontent', $context, $blocks);
-        // line 165
+        // line 182
         echo "  </body>
 </html>
 ";
@@ -141,18 +141,18 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
       ";
         // line 64
         $this->displayBlock('menu', $context, $blocks);
-        // line 149
+        // line 166
         echo "      <!-- end menu -->
 
       ";
-        // line 151
+        // line 168
         $this->displayBlock('contentpage', $context, $blocks);
-        // line 154
+        // line 171
         echo "
       ";
-        // line 155
+        // line 172
         $this->displayBlock('footer', $context, $blocks);
-        // line 160
+        // line 177
         echo "
 
 
@@ -199,7 +199,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
           <li class=\"nav-item\">
              <a class=\"nav-link\" href=\"";
         // line 83
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("admin");
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("home");
         echo "\">Home</a>
           </li>
 
@@ -267,6 +267,26 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
                 </div>
               </li>
 
+              <li class=\"nav-item dropdown\">
+                <a class=\"nav-link dropdown-toggle\" href=\"#\"
+                id=\"navbardrop\" data-toggle=\"dropdown\">
+                  Tabela
+                </a>
+                <div class=\"dropdown-menu\">
+                  <a class=\"dropdown-item\" 
+                  href=\"";
+        // line 145
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("new_table");
+        echo "\" >
+                    Nova Tabela
+                  </a>
+                  <a class=\"dropdown-item\" 
+                  href=\"#\">
+                    Exibir Tabelas
+                  </a>
+                </div>
+              </li>
+
           <li class=\"nav-item\">
              <a class=\"nav-link\" href=\"/\">Ir para o site</a>
           </li>
@@ -286,7 +306,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     }
 
-    // line 151
+    // line 168
     public function block_contentpage($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -295,7 +315,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentpage"));
 
-        // line 152
+        // line 169
         echo "
       ";
         
@@ -306,7 +326,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     }
 
-    // line 155
+    // line 172
     public function block_footer($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -315,7 +335,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 156
+        // line 173
         echo "      <footer class=\"fixed-bottom\">
       \tRodapé aqui
       </footer>
@@ -340,7 +360,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     public function getDebugInfo()
     {
-        return array (  319 => 156,  310 => 155,  299 => 152,  290 => 151,  263 => 132,  256 => 128,  239 => 114,  232 => 110,  202 => 83,  195 => 79,  179 => 65,  170 => 64,  156 => 160,  154 => 155,  151 => 154,  149 => 151,  145 => 149,  143 => 64,  139 => 62,  130 => 61,  112 => 6,  100 => 165,  98 => 61,  56 => 22,  37 => 6,  30 => 1,);
+        return array (  339 => 173,  330 => 172,  319 => 169,  310 => 168,  279 => 145,  263 => 132,  256 => 128,  239 => 114,  232 => 110,  202 => 83,  195 => 79,  179 => 65,  170 => 64,  156 => 177,  154 => 172,  151 => 171,  149 => 168,  145 => 166,  143 => 64,  139 => 62,  130 => 61,  112 => 6,  100 => 182,  98 => 61,  56 => 22,  37 => 6,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -435,7 +455,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
           </li>
 
           <li class=\"nav-item\">
-             <a class=\"nav-link\" href=\"{{ path('admin') }}\">Home</a>
+             <a class=\"nav-link\" href=\"{{ path('home') }}\">Home</a>
           </li>
 
            <li class=\"nav-item dropdown\">
@@ -487,6 +507,23 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
                   href=\"{{ path('show_promotions') }}\">
         \t        \tExibir Promoções
         \t        </a>
+                </div>
+              </li>
+
+              <li class=\"nav-item dropdown\">
+                <a class=\"nav-link dropdown-toggle\" href=\"#\"
+                id=\"navbardrop\" data-toggle=\"dropdown\">
+                  Tabela
+                </a>
+                <div class=\"dropdown-menu\">
+                  <a class=\"dropdown-item\" 
+                  href=\"{{ path('new_table') }}\" >
+                    Nova Tabela
+                  </a>
+                  <a class=\"dropdown-item\" 
+                  href=\"#\">
+                    Exibir Tabelas
+                  </a>
                 </div>
               </li>
 

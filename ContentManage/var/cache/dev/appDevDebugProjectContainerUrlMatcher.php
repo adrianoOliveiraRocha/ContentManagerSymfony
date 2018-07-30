@@ -123,6 +123,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::newPromotion',  '_route' => 'new_promotion',);
             }
 
+            // new_table
+            if ('/new_table' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\TableController::newTable',  '_route' => 'new_table',);
+            }
+
         }
 
         elseif (0 === strpos($pathinfo, '/c')) {
@@ -245,6 +250,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         // my_data
         if ('/my_data' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\UserController::myData',  '_route' => 'my_data',);
+        }
+
+        // home
+        if ('/home' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\UserController::adminHome',  '_route' => 'home',);
         }
 
         if ('/' === $pathinfo && !$allow) {

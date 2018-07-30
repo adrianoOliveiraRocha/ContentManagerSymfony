@@ -15,7 +15,7 @@
     <!-- end messages -->
 
     <div class="container">
-      <h2>Login</h2>
+      <h2>Meus Dados</h2>
       <form action="{{ path('my_data') }}" method="post">
         <input type="hidden" name="id" 
         value="{{ app.session.get('user')['id'] }}">

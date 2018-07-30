@@ -9,5 +9,5 @@ parameters:
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    database_path: '%kernel.project_dir%/var/data/data.sqlite'
+    # database_path: '%kernel.project_dir%/var/data/data.sqlite'
     secret: d21d76bf7f497263bbcdb9fe6667b0b6d44d1648
