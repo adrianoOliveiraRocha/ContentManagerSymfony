@@ -89,16 +89,28 @@ class __TwigTemplate_f22e6773777772cf4c9b41ebfc1955f76c061a62e69b995a026ca941188
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 7
-        echo "    <!-- Latest compiled and minified CSS -->
-    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css\">
-    <!-- DataTable -->
-    <link rel=\"stylesheet\"
-    href=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/css/jquery.dataTables.css\">
+        echo "
+    
+    <link rel=\"stylesheet\" type=\"text/css\"
+      href=\"";
+        // line 10
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/bootstrap.min.css"), "html", null, true);
+        echo "\">
 
-    <script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.js\"></script>
+    <script src=\"";
+        // line 12
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/jquery.min.js"), "html", null, true);
+        echo "\"></script>
 
-    <script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.dataTables.js\"></script>
-    <!-- end links -->
+    <script src=\"";
+        // line 14
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/popper.min.js"), "html", null, true);
+        echo "\"></script>
+    <script src=\"";
+        // line 15
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/bootstrap.min.js"), "html", null, true);
+        echo "\"></script>
+    
     ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -279,7 +291,7 @@ class __TwigTemplate_f22e6773777772cf4c9b41ebfc1955f76c061a62e69b995a026ca941188
 
     public function getDebugInfo()
     {
-        return array (  253 => 68,  244 => 67,  231 => 61,  222 => 60,  211 => 57,  202 => 56,  164 => 25,  155 => 24,  144 => 77,  142 => 67,  138 => 65,  136 => 60,  133 => 59,  131 => 56,  127 => 54,  125 => 24,  121 => 22,  112 => 21,  92 => 7,  83 => 6,  65 => 5,  53 => 79,  51 => 21,  44 => 18,  42 => 6,  38 => 5,  32 => 1,);
+        return array (  265 => 68,  256 => 67,  243 => 61,  234 => 60,  223 => 57,  214 => 56,  176 => 25,  167 => 24,  156 => 77,  154 => 67,  150 => 65,  148 => 60,  145 => 59,  143 => 56,  139 => 54,  137 => 24,  133 => 22,  124 => 21,  111 => 15,  107 => 14,  102 => 12,  97 => 10,  92 => 7,  83 => 6,  65 => 5,  53 => 79,  51 => 21,  44 => 18,  42 => 6,  38 => 5,  32 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -298,16 +310,16 @@ class __TwigTemplate_f22e6773777772cf4c9b41ebfc1955f76c061a62e69b995a026ca941188
     <meta charset=\"UTF-8\" />
     <title>{% block title %}Sistema Gráfica{% endblock %}</title>
     {% block stylesheets %}
-    <!-- Latest compiled and minified CSS -->
-    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css\">
-    <!-- DataTable -->
-    <link rel=\"stylesheet\"
-    href=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/css/jquery.dataTables.css\">
 
-    <script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.js\"></script>
+    
+    <link rel=\"stylesheet\" type=\"text/css\"
+      href=\"{{ asset('bootstrap/bootstrap.min.css') }}\">
 
-    <script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.dataTables.js\"></script>
-    <!-- end links -->
+    <script src=\"{{ asset('bootstrap/jquery.min.js') }}\"></script>
+
+    <script src=\"{{ asset('bootstrap/popper.min.js') }}\"></script>
+    <script src=\"{{ asset('bootstrap/bootstrap.min.js') }}\"></script>
+    
     {% endblock %}
     <link rel=\"icon\" type=\"image/x-icon\" href=\"{{ asset('favicon.ico') }}\" />
   </head>

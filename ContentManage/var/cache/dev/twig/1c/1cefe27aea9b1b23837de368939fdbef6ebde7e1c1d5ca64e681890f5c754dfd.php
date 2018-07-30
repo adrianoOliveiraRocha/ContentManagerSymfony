@@ -38,42 +38,45 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         echo "</title>
 
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-\t  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\">
-\t  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
-\t  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\"></script>
-    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\"></script>
+    
+\t  <link rel=\"stylesheet\" type=\"text/css\"
+      href=\"";
+        // line 11
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/bootstrap.min.css"), "html", null, true);
+        echo "\">
+
+\t  <script src=\"";
+        // line 13
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/jquery.min.js"), "html", null, true);
+        echo "\"></script>
+
+\t  <script src=\"";
+        // line 15
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/popper.min.js"), "html", null, true);
+        echo "\"></script>
+    <script src=\"";
+        // line 16
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bootstrap/bootstrap.min.js"), "html", null, true);
+        echo "\"></script>
 
     <!-- extra -->
-    <link href=\"https://rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/images/favicon.ico\" rel=\"icon\" type=\"image/png\"/>
-    <link href=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/54efd87f/lojagrafica/css/fontello.css\" rel=\"stylesheet\" style=\"text.css\">
-    <link href=\"https://fonts.googleapis.com/css?family=Lemonada\" rel=\"stylesheet\">
-\t  <link href=\"https://fonts.googleapis.com/css?family=Indie+Flower\" rel=\"stylesheet\">
-    <script src=\"https://rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/js/extra.js\" type=\"text/javascript\">
-\t  </script>
-
-    <link rel=\"icon\" type=\"image/x-icon\" href=\"";
-        // line 22
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("favicon.ico"), "html", null, true);
-        echo "\" />
-
-
     <!-- DataTable -->
-  \t<link rel=\"stylesheet\"
-  \thref=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/css/jquery.dataTables.css\">
+  \t<link href=\"";
+        // line 20
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("datatable/jquery.dataTables.css"), "html", null, true);
+        echo "\" 
+    rel=\"stylesheet\" type=\"text/css\" />
 
-  \t<script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.js\"></script>
+  \t<script src=\"";
+        // line 23
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("datatable/jquery.js"), "html", null, true);
+        echo "\"></script>
 
-  \t<script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.dataTables.js\"></script>
-
-
-  \t</script>
-
-    <!-- DataTable -->
-\t  <link rel=\"stylesheet\"
-\t  href=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/css/jquery.dataTables.css\">
-    <script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.js\"></script>
-    <script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.dataTables.js\"></script>
-    <!-- End DataTable -->
+  \t<script src=\"";
+        // line 25
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("datatable/jquery.dataTables.js"), "html", null, true);
+        echo "\"></script>
+    
 
   \t<script type=\"text/javascript\" language=\"javascript\" class=\"init\">
   \t  \$(document).ready(function() {
@@ -94,9 +97,9 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
   </head>
   <body>
     ";
-        // line 61
+        // line 46
         $this->displayBlock('generalcontent', $context, $blocks);
-        // line 182
+        // line 167
         echo "  </body>
 </html>
 ";
@@ -126,7 +129,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     }
 
-    // line 61
+    // line 46
     public function block_generalcontent($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -135,24 +138,24 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "generalcontent"));
 
-        // line 62
+        // line 47
         echo "    <div class=\"container-fluid\">
       <!-- menu -->
       ";
-        // line 64
+        // line 49
         $this->displayBlock('menu', $context, $blocks);
-        // line 166
+        // line 151
         echo "      <!-- end menu -->
 
       ";
-        // line 168
+        // line 153
         $this->displayBlock('contentpage', $context, $blocks);
-        // line 171
+        // line 156
         echo "
       ";
-        // line 172
+        // line 157
         $this->displayBlock('footer', $context, $blocks);
-        // line 177
+        // line 162
         echo "
 
 
@@ -166,7 +169,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     }
 
-    // line 64
+    // line 49
     public function block_menu($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -175,7 +178,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "menu"));
 
-        // line 65
+        // line 50
         echo "      <nav class=\"navbar navbar-expand-md bg-dark navbar-dark\">
        <!-- Brand -->
        <a class=\"navbar-brand\" href=\"#\">Navbar</a>
@@ -191,33 +194,33 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
           <li class=\"nav-item\">
              <a class=\"nav-link\" href=\"";
-        // line 79
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("my_data");
-        echo "\">Minha Conta</a>
-          </li>
-
-          <li class=\"nav-item\">
-             <a class=\"nav-link\" href=\"";
-        // line 83
+        // line 64
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("home");
         echo "\">Home</a>
           </li>
 
-           <li class=\"nav-item dropdown\">
-      \t      <a class=\"nav-link dropdown-toggle\" href=\"#\"
-      \t      id=\"navbardrop\" data-toggle=\"dropdown\">
-      \t        Categorias
-      \t      </a>
-      \t      <div class=\"dropdown-menu\">
-      \t        <a class=\"dropdown-item\"
-                href=\"/new_category\" >
-      \t        \tNova Categoria
-      \t        </a>
-        \t        <a class=\"dropdown-item\" href=\"/show_categories\">
-      \t        \tExibir Categorias
-      \t        </a>
-              </div>
-            </li>
+          <li class=\"nav-item\">
+             <a class=\"nav-link\" href=\"";
+        // line 68
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("my_data");
+        echo "\">Minha Conta</a>
+          </li>
+
+          <li class=\"nav-item dropdown\">
+    \t      <a class=\"nav-link dropdown-toggle\" href=\"#\"
+    \t      id=\"navbardrop\" data-toggle=\"dropdown\">
+    \t        Categorias
+    \t      </a>
+    \t      <div class=\"dropdown-menu\">
+    \t        <a class=\"dropdown-item\"
+              href=\"/new_category\" >
+    \t        \tNova Categoria
+    \t        </a>
+      \t        <a class=\"dropdown-item\" href=\"/show_categories\">
+    \t        \tExibir Categorias
+    \t        </a>
+            </div>
+          </li>
 
 
             <li class=\"nav-item dropdown\">
@@ -228,14 +231,14 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
        \t      <div class=\"dropdown-menu\">
        \t        <a class=\"dropdown-item\" 
                   href=\"";
-        // line 110
+        // line 95
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("new_product");
         echo "\" >
        \t        \tNovo Produto
        \t        </a>
        \t        <a class=\"dropdown-item\" 
                   href=\"";
-        // line 114
+        // line 99
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("show_products");
         echo "\">
        \t        \tExibir Produtos
@@ -252,14 +255,14 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         \t      <div class=\"dropdown-menu\">
         \t        <a class=\"dropdown-item\" 
                   href=\"";
-        // line 128
+        // line 113
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("new_promotion");
         echo "\" >
         \t        \tNova Promoção
         \t        </a>
         \t        <a class=\"dropdown-item\" 
                   href=\"";
-        // line 132
+        // line 117
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("show_promotions");
         echo "\">
         \t        \tExibir Promoções
@@ -275,14 +278,14 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
                 <div class=\"dropdown-menu\">
                   <a class=\"dropdown-item\" 
                   href=\"";
-        // line 145
+        // line 130
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("new_table");
         echo "\" >
                     Nova Tabela
                   </a>
                   <a class=\"dropdown-item\" 
                   href=\"";
-        // line 149
+        // line 134
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("show_tables");
         echo "\">
                     Exibir Tabelas
@@ -309,7 +312,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     }
 
-    // line 168
+    // line 153
     public function block_contentpage($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -318,7 +321,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentpage"));
 
-        // line 169
+        // line 154
         echo "
       ";
         
@@ -329,7 +332,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     }
 
-    // line 172
+    // line 157
     public function block_footer($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -338,7 +341,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 173
+        // line 158
         echo "      <footer class=\"fixed-bottom\">
       \tRodapé aqui
       </footer>
@@ -363,7 +366,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     public function getDebugInfo()
     {
-        return array (  342 => 173,  333 => 172,  322 => 169,  313 => 168,  286 => 149,  279 => 145,  263 => 132,  256 => 128,  239 => 114,  232 => 110,  202 => 83,  195 => 79,  179 => 65,  170 => 64,  156 => 177,  154 => 172,  151 => 171,  149 => 168,  145 => 166,  143 => 64,  139 => 62,  130 => 61,  112 => 6,  100 => 182,  98 => 61,  56 => 22,  37 => 6,  30 => 1,);
+        return array (  345 => 158,  336 => 157,  325 => 154,  316 => 153,  289 => 134,  282 => 130,  266 => 117,  259 => 113,  242 => 99,  235 => 95,  205 => 68,  198 => 64,  182 => 50,  173 => 49,  159 => 162,  157 => 157,  154 => 156,  152 => 153,  148 => 151,  146 => 49,  142 => 47,  133 => 46,  115 => 6,  103 => 167,  101 => 46,  77 => 25,  72 => 23,  66 => 20,  59 => 16,  55 => 15,  50 => 13,  45 => 11,  37 => 6,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -384,39 +387,24 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
     <title>{% block title %}Sistema Gráfica{% endblock %}</title>
 
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-\t  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\">
-\t  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
-\t  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\"></script>
-    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\"></script>
+    
+\t  <link rel=\"stylesheet\" type=\"text/css\"
+      href=\"{{ asset('bootstrap/bootstrap.min.css') }}\">
+
+\t  <script src=\"{{ asset('bootstrap/jquery.min.js') }}\"></script>
+
+\t  <script src=\"{{ asset('bootstrap/popper.min.js') }}\"></script>
+    <script src=\"{{ asset('bootstrap/bootstrap.min.js') }}\"></script>
 
     <!-- extra -->
-    <link href=\"https://rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/images/favicon.ico\" rel=\"icon\" type=\"image/png\"/>
-    <link href=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/54efd87f/lojagrafica/css/fontello.css\" rel=\"stylesheet\" style=\"text.css\">
-    <link href=\"https://fonts.googleapis.com/css?family=Lemonada\" rel=\"stylesheet\">
-\t  <link href=\"https://fonts.googleapis.com/css?family=Indie+Flower\" rel=\"stylesheet\">
-    <script src=\"https://rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/js/extra.js\" type=\"text/javascript\">
-\t  </script>
-
-    <link rel=\"icon\" type=\"image/x-icon\" href=\"{{ asset('favicon.ico') }}\" />
-
-
     <!-- DataTable -->
-  \t<link rel=\"stylesheet\"
-  \thref=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/css/jquery.dataTables.css\">
+  \t<link href=\"{{ asset('datatable/jquery.dataTables.css') }}\" 
+    rel=\"stylesheet\" type=\"text/css\" />
 
-  \t<script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.js\"></script>
+  \t<script src=\"{{ asset('datatable/jquery.js') }}\"></script>
 
-  \t<script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.dataTables.js\"></script>
-
-
-  \t</script>
-
-    <!-- DataTable -->
-\t  <link rel=\"stylesheet\"
-\t  href=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/css/jquery.dataTables.css\">
-    <script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.js\"></script>
-    <script src=\"https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.dataTables.js\"></script>
-    <!-- End DataTable -->
+  \t<script src=\"{{ asset('datatable/jquery.dataTables.js') }}\"></script>
+    
 
   \t<script type=\"text/javascript\" language=\"javascript\" class=\"init\">
   \t  \$(document).ready(function() {
@@ -454,28 +442,28 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
          <ul class=\"navbar-nav\">
 
           <li class=\"nav-item\">
-             <a class=\"nav-link\" href=\"{{ path('my_data') }}\">Minha Conta</a>
-          </li>
-
-          <li class=\"nav-item\">
              <a class=\"nav-link\" href=\"{{ path('home') }}\">Home</a>
           </li>
 
-           <li class=\"nav-item dropdown\">
-      \t      <a class=\"nav-link dropdown-toggle\" href=\"#\"
-      \t      id=\"navbardrop\" data-toggle=\"dropdown\">
-      \t        Categorias
-      \t      </a>
-      \t      <div class=\"dropdown-menu\">
-      \t        <a class=\"dropdown-item\"
-                href=\"/new_category\" >
-      \t        \tNova Categoria
-      \t        </a>
-        \t        <a class=\"dropdown-item\" href=\"/show_categories\">
-      \t        \tExibir Categorias
-      \t        </a>
-              </div>
-            </li>
+          <li class=\"nav-item\">
+             <a class=\"nav-link\" href=\"{{ path('my_data') }}\">Minha Conta</a>
+          </li>
+
+          <li class=\"nav-item dropdown\">
+    \t      <a class=\"nav-link dropdown-toggle\" href=\"#\"
+    \t      id=\"navbardrop\" data-toggle=\"dropdown\">
+    \t        Categorias
+    \t      </a>
+    \t      <div class=\"dropdown-menu\">
+    \t        <a class=\"dropdown-item\"
+              href=\"/new_category\" >
+    \t        \tNova Categoria
+    \t        </a>
+      \t        <a class=\"dropdown-item\" href=\"/show_categories\">
+    \t        \tExibir Categorias
+    \t        </a>
+            </div>
+          </li>
 
 
             <li class=\"nav-item dropdown\">

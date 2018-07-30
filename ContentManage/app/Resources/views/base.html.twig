@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <title>{% block title %}Sistema Gráfica{% endblock %}</title>
     {% block stylesheets %}
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <!-- DataTable -->
-    <link rel="stylesheet"
-    href="https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/css/jquery.dataTables.css">
 
-    <script src="https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.js"></script>
+    
+    <link rel="stylesheet" type="text/css"
+      href="{{ asset('bootstrap/bootstrap.min.css') }}">
 
-    <script src="https://cdn.rawgit.com/adrianoOliveiraRocha/cdn/master/lojagrafica/media/js/jquery.dataTables.js"></script>
-    <!-- end links -->
+    <script src="{{ asset('bootstrap/jquery.min.js') }}"></script>
+
+    <script src="{{ asset('bootstrap/popper.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
+    
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
   </head>

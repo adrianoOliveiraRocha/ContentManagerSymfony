@@ -220,6 +220,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::deletePromotion',  '_route' => 'delete_promotion',);
             }
 
+            // delete_table
+            if ('/delete_table' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\TableController::deleteTable',  '_route' => 'delete_table',);
+            }
+
         }
 
         // homepage

@@ -16,6 +16,6 @@ if (!\class_exists(appDevDebugProjectContainer::class, false)) {
 
 return new \ContainerW9sofap\appDevDebugProjectContainer(array(
     'container.build_hash' => 'W9sofap',
-    'container.build_id' => 'efca6810',
-    'container.build_time' => 1532956290,
+    'container.build_id' => 'bd71f219',
+    'container.build_time' => 1532967692,
 ), __DIR__.\DIRECTORY_SEPARATOR.'ContainerW9sofap');

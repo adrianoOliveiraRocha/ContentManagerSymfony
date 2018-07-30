@@ -10,7 +10,7 @@
 				<th>ID</th>
 				<th>Nome</th>
 				<th>Imagem</th>
-				<th></th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -24,13 +24,7 @@
 				</td>
 				<td>{{ product.name }}</td>
 				<td><img src="{{ asset('uploads/images/thumb/') }}{{ product.image }}"></td>
-				<td>
-					<a class="btn btn-danger" style='color: white' 
-						href="{{ path('delete_product', {'id': product.id}) }}">
-						Deletar
-					</a>
-				</td>
-
+			
 			</tr>
 			{% endfor %}
 

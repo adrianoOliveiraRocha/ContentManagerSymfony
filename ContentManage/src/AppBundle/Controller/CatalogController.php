@@ -59,9 +59,12 @@ class CatalogController extends Controller{
     $id = $request->query->get('id');
     $name = $request->query->get('name');
 
+    $id = $request->query->get('id');
+    $repository = $this->getDoctrine()->getRepository(Category::class);
+    $category = $repository->findOneById($id);
+
     return $this->render('catalog/edit_category.html.twig', array(
-      'id' => $id,
-      'name' => $name,
+      'category' => $category,
     ));
   }
 

@@ -10,7 +10,7 @@
 				<th>ID</th>
 				<th>Descrição</th>
 				<th>Imagem</th>
-				<th></th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -24,13 +24,7 @@
 				</td>
 				<td>{{ promotion.description }}</td>
 				<td><img src="{{ asset('uploads/images/thumb/') }}{{ promotion.image }}"></td>
-				<td>
-					<a class="btn btn-danger" style='color: white' 
-						href="{{ path('delete_promotion') }}?id={{ promotion.id }}">
-						Deletar
-					</a>
-				</td>
-
+				
 			</tr>
 			{% endfor %}
 

@@ -101,12 +101,24 @@ class TableController extends Controller {
   }
 
   /**
-  * Route=('/delete_table', name='delete_table')
-  */
-  function deleteTeble(Request $request){
-    $id = $_GET['id'];
-    $entityManager = $this->getDoctrine()->getManager();
-    $entityManager->remove();
+   * @Route("/delete_table", name="delete_table")
+   */
+  function deleteTable(Request $request){
 
+    $id = $_GET['id'];
+    $repository = $this->getDoctrine()->getRepository(Table::class);
+    $table = $repository->findOneById($id);
+
+    try{
+      $entityManager = $this->getDoctrine()->getManager();
+      $entityManager->remove($table);
+      $entityManager->flush();
+      $this->addFlash('msg', 'Tabela deletada com sucesso!');
+      return $this->render('accounts/admin.html.twig'); 
+    } catch (\Exception $e){
+      return new Response($e->getMessage());
+    }
+  
   }
+
 }

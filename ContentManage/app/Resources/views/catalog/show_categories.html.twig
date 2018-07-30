@@ -9,7 +9,6 @@
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>
-				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,12 +21,6 @@
 					</a>
 				</td>
 				<td>{{ category.name }}</td>
-				<td>
-					<a type="button" class="btn btn-danger" style='color: white' 
-						href="{{ path('delete_category', {'id': category.id}) }}">
-						Deletar
-					</a>
-				</td>
 			</tr>
 			{% endfor %}
 

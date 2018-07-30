@@ -19,10 +19,14 @@
       <div class="form-group">
         <label>Nome:</label>
         <input name='name' class="form-control" name="namecategory"
-        placeholder="Digite o nome da nova categoria" value="{{name}}">
-        <input type="hidden" name='id' value="{{id}}"/>
+        placeholder="Digite o nome da nova categoria" value="{{category.name}}">
+        <input type="hidden" name='id' value="{{category.id}}"/>
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
+      <a type="button" class="btn btn-danger" style='color: white' 
+        href="{{ path('delete_category', {'id': category.id}) }}">
+        Deletar
+      </a>
     </form>
   </div>
 
