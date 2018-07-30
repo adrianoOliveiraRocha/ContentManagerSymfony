@@ -281,7 +281,10 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
                     Nova Tabela
                   </a>
                   <a class=\"dropdown-item\" 
-                  href=\"#\">
+                  href=\"";
+        // line 149
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("show_tables");
+        echo "\">
                     Exibir Tabelas
                   </a>
                 </div>
@@ -360,7 +363,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
 
     public function getDebugInfo()
     {
-        return array (  339 => 173,  330 => 172,  319 => 169,  310 => 168,  279 => 145,  263 => 132,  256 => 128,  239 => 114,  232 => 110,  202 => 83,  195 => 79,  179 => 65,  170 => 64,  156 => 177,  154 => 172,  151 => 171,  149 => 168,  145 => 166,  143 => 64,  139 => 62,  130 => 61,  112 => 6,  100 => 182,  98 => 61,  56 => 22,  37 => 6,  30 => 1,);
+        return array (  342 => 173,  333 => 172,  322 => 169,  313 => 168,  286 => 149,  279 => 145,  263 => 132,  256 => 128,  239 => 114,  232 => 110,  202 => 83,  195 => 79,  179 => 65,  170 => 64,  156 => 177,  154 => 172,  151 => 171,  149 => 168,  145 => 166,  143 => 64,  139 => 62,  130 => 61,  112 => 6,  100 => 182,  98 => 61,  56 => 22,  37 => 6,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -521,7 +524,7 @@ class __TwigTemplate_c35665848a7bd62ab324478793f7d7eda9559b8b72fa05c7668d72ffe8e
                     Nova Tabela
                   </a>
                   <a class=\"dropdown-item\" 
-                  href=\"#\">
+                  href=\"{{ path('show_tables') }}\">
                     Exibir Tabelas
                   </a>
                 </div>

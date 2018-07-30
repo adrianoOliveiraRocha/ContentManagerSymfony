@@ -95,7 +95,7 @@
     <parameter key="container.autowiring.strict_mode">true</parameter>
     <parameter key="container.dumper.inline_class_loader">true</parameter>
     <parameter key="database_host">127.0.0.1</parameter>
-    <parameter key="database_port">null</parameter>
+    <parameter key="database_port">3306</parameter>
     <parameter key="database_name">contentmanage</parameter>
     <parameter key="database_user">adriano</parameter>
     <parameter key="database_password">453231</parameter>
@@ -103,7 +103,6 @@
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">null</parameter>
     <parameter key="mailer_password">null</parameter>
-    <parameter key="database_path">/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/var/data/data.sqlite</parameter>
     <parameter key="secret">d21d76bf7f497263bbcdb9fe6667b0b6d44d1648</parameter>
     <parameter key="locale">en</parameter>
     <parameter key="fragment.renderer.hinclude.global_template"></parameter>
@@ -3118,14 +3117,13 @@
     </service>
     <service id="doctrine.dbal.default_connection" class="Doctrine\DBAL\Connection" public="true">
       <argument type="collection">
-        <argument key="driver">pdo_sqlite</argument>
+        <argument key="driver">pdo_mysql</argument>
         <argument key="host">127.0.0.1</argument>
-        <argument key="port">null</argument>
+        <argument key="port">3306</argument>
         <argument key="dbname">contentmanage</argument>
         <argument key="user">adriano</argument>
         <argument key="password">453231</argument>
         <argument key="charset">UTF8</argument>
-        <argument key="path">/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/var/data/data.sqlite</argument>
         <argument key="driverOptions" type="collection"/>
         <argument key="defaultTableOptions" type="collection"/>
       </argument>

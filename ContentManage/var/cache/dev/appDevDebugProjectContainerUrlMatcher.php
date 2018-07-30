@@ -164,6 +164,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::showPromotions',  '_route' => 'show_promotions',);
             }
 
+            // show_tables
+            if ('/show_tables' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\TableController::showTables',  '_route' => 'show_tables',);
+            }
+
         }
 
         // about
@@ -240,6 +245,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         // app_user_logout
         if ('/logout' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\UserController::logout',  '_route' => 'app_user_logout',);
+        }
+
+        // table_detail
+        if ('/table_detail' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\TableController::tableDetail',  '_route' => 'table_detail',);
         }
 
         // admin

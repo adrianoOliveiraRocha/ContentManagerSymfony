@@ -51,5 +51,7 @@ class Utils {
         $dest = $dest . '/thumb/'. $fileName;
         $image->save($dest);
     }
+
+   
 }
 
