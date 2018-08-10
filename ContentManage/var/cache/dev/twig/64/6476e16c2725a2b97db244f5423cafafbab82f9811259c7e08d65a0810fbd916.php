@@ -47,28 +47,63 @@ class __TwigTemplate_bfe065c9ddb630c8d04c9abc6b2e1dc2011812a005bc1aa005243056d43
 
         // line 4
         echo "<div class=\"panel panel-default form-central\"
-  style=\"width: 50%; margin-left: auto; margin-right: auto; margin-top: 3%;\">
-  <!-- messages -->
-  ";
-        // line 7
+\tstyle=\"width: 70%; margin-left: auto; margin-right: auto; margin-top: 3%;\">
+\t<h3>Área Administrativa -> Home</h3>
+\t<p></p>
+\t<table id=\"table\" class=\"display\">
+
+\t\t<thead>
+\t\t\t<tr>
+\t\t\t\t<th>ID</th>
+\t\t\t\t<th>Nome</th>
+\t\t\t\t<th>Imagem</th>
+\t\t\t\t
+\t\t\t</tr>
+\t\t</thead>
+\t\t<tbody>
+\t\t\t";
+        // line 19
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "flashes", array(0 => "msg"), "method"));
-        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 8
-            echo "  <div class=\"alert alert-success alert-dismissable\">
-    <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
-      ";
-            // line 10
-            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+        $context['_seq'] = twig_ensure_traversable(($context["products"] ?? $this->getContext($context, "products")));
+        foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
+            // line 20
+            echo "\t\t\t<tr>
+\t\t\t\t<td>
+\t\t\t\t\t<a href=\"";
+            // line 22
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("edit_product", array("id" => $this->getAttribute($context["product"], "id", array()))), "html", null, true);
+            echo "\"
+\t\t\t\t\t title=\"Detalhes\">
+\t\t\t\t\t";
+            // line 24
+            echo twig_escape_filter($this->env, $this->getAttribute($context["product"], "id", array()), "html", null, true);
             echo "
-  </div>
-  ";
+\t\t\t\t\t</a>
+\t\t\t\t</td>
+\t\t\t\t<td>";
+            // line 27
+            echo twig_escape_filter($this->env, $this->getAttribute($context["product"], "name", array()), "html", null, true);
+            echo "</td>
+\t\t\t\t<td><img src=\"";
+            // line 28
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("uploads/images/thumb/"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($context["product"], "image", array()), "html", null, true);
+            echo "\"></td>
+\t\t\t
+\t\t\t</tr>
+\t\t\t";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 13
-        echo "  <!-- end messages -->
+        // line 32
+        echo "
+
+\t\t</tbody>
+\t</table>
+\t
+
+
 </div>
 ";
         
@@ -91,7 +126,7 @@ class __TwigTemplate_bfe065c9ddb630c8d04c9abc6b2e1dc2011812a005bc1aa005243056d43
 
     public function getDebugInfo()
     {
-        return array (  71 => 13,  62 => 10,  58 => 8,  54 => 7,  49 => 4,  40 => 3,  11 => 1,);
+        return array (  100 => 32,  89 => 28,  85 => 27,  79 => 24,  74 => 22,  70 => 20,  66 => 19,  49 => 4,  40 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -108,15 +143,40 @@ class __TwigTemplate_bfe065c9ddb630c8d04c9abc6b2e1dc2011812a005bc1aa005243056d43
 
 {% block contentpage %}
 <div class=\"panel panel-default form-central\"
-  style=\"width: 50%; margin-left: auto; margin-right: auto; margin-top: 3%;\">
-  <!-- messages -->
-  {% for message in app.flashes('msg') %}
-  <div class=\"alert alert-success alert-dismissable\">
-    <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
-      {{ message }}
-  </div>
-  {% endfor %}
-  <!-- end messages -->
+\tstyle=\"width: 70%; margin-left: auto; margin-right: auto; margin-top: 3%;\">
+\t<h3>Área Administrativa -> Home</h3>
+\t<p></p>
+\t<table id=\"table\" class=\"display\">
+
+\t\t<thead>
+\t\t\t<tr>
+\t\t\t\t<th>ID</th>
+\t\t\t\t<th>Nome</th>
+\t\t\t\t<th>Imagem</th>
+\t\t\t\t
+\t\t\t</tr>
+\t\t</thead>
+\t\t<tbody>
+\t\t\t{% for product in products %}
+\t\t\t<tr>
+\t\t\t\t<td>
+\t\t\t\t\t<a href=\"{{ path('edit_product', {'id': product.id}) }}\"
+\t\t\t\t\t title=\"Detalhes\">
+\t\t\t\t\t{{ product.id }}
+\t\t\t\t\t</a>
+\t\t\t\t</td>
+\t\t\t\t<td>{{ product.name }}</td>
+\t\t\t\t<td><img src=\"{{ asset('uploads/images/thumb/') }}{{ product.image }}\"></td>
+\t\t\t
+\t\t\t</tr>
+\t\t\t{% endfor %}
+
+
+\t\t</tbody>
+\t</table>
+\t
+
+
 </div>
 {% endblock %}
 ", "accounts/admin.html.twig", "/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/app/Resources/views/accounts/admin.html.twig");

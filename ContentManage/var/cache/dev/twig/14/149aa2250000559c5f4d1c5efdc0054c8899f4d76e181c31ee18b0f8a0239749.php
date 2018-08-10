@@ -70,9 +70,10 @@ class __TwigTemplate_dcec90299b6c2dcaeeb7d06a9c5f91ca00eb670a54d7fcfae8d32b928d7
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 14
         echo "  <!-- end messages -->
-
+  
   <div class=\"container\">
-    <h2>Novo Produto</h2>
+    <h3>Área Administrativa -> Novo Produto</h3>
+    <p></p>
     <form action=\"/create_newproduct\" 
     method=\"post\" enctype=\"multipart/form-data\">
       
@@ -94,11 +95,11 @@ class __TwigTemplate_dcec90299b6c2dcaeeb7d06a9c5f91ca00eb670a54d7fcfae8d32b928d7
         <select class=\"form-control\" name=\"category\">
 
           ";
-        // line 38
+        // line 39
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["categories"] ?? $this->getContext($context, "categories")));
         foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
-            // line 39
+            // line 40
             echo "            <option value='";
             echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "id", array()), "html", null, true);
             echo "'>";
@@ -109,7 +110,7 @@ class __TwigTemplate_dcec90299b6c2dcaeeb7d06a9c5f91ca00eb670a54d7fcfae8d32b928d7
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 40
+        // line 41
         echo "          
 
         </select>
@@ -147,7 +148,7 @@ class __TwigTemplate_dcec90299b6c2dcaeeb7d06a9c5f91ca00eb670a54d7fcfae8d32b928d7
 
     public function getDebugInfo()
     {
-        return array (  113 => 40,  102 => 39,  98 => 38,  72 => 14,  63 => 11,  59 => 9,  55 => 8,  49 => 4,  40 => 3,  11 => 1,);
+        return array (  114 => 41,  103 => 40,  99 => 39,  72 => 14,  63 => 11,  59 => 9,  55 => 8,  49 => 4,  40 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -174,9 +175,10 @@ class __TwigTemplate_dcec90299b6c2dcaeeb7d06a9c5f91ca00eb670a54d7fcfae8d32b928d7
   </div>
   {% endfor %}
   <!-- end messages -->
-
+  
   <div class=\"container\">
-    <h2>Novo Produto</h2>
+    <h3>Área Administrativa -> Novo Produto</h3>
+    <p></p>
     <form action=\"/create_newproduct\" 
     method=\"post\" enctype=\"multipart/form-data\">
       

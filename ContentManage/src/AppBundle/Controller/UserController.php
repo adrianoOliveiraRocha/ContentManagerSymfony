@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Session\Session;
+use AppBundle\Entity\Product;
 
 
 class UserController extends Controller
@@ -107,7 +108,11 @@ class UserController extends Controller
     * @Route("/home", name="home")
     */
     public function adminHome(Request $request) {
-      return $this->render('accounts/admin.html.twig');
+      $repository = $this->getDoctrine()->getRepository(Product::class);
+      $products = $repository->findAll();
+      return $this->render('accounts/admin.html.twig', array(
+          'products' => $products,
+      ));
     }
   
 }

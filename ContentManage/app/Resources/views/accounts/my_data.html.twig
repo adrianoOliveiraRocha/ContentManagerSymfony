@@ -15,7 +15,8 @@
     <!-- end messages -->
 
     <div class="container">
-      <h2>Meus Dados</h2>
+      <h3>Área Administrativa -> Meus Dados</h3>
+      <p></p>
       <form action="{{ path('my_data') }}" method="post">
         <input type="hidden" name="id" 
         value="{{ app.session.get('user')['id'] }}">
