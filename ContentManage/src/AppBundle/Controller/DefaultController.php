@@ -20,8 +20,17 @@ class DefaultController extends Controller
         $categories = $repository->findAll();
         $repository = $this->getDoctrine()->getRepository(Product::class);
         $products = $repository->findAll();
-        
-        return $this->render('default/index.html.twig', []);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $products, 
+            $request->query->getInt('page', 1)/*page number*/,
+            6 /*limit per page*/
+        );
+
+        return $this->render('default/index.html.twig', [
+            'products' => $pagination,
+        ]);
     }
 
     /**

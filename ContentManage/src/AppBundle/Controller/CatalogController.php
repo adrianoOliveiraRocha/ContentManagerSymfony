@@ -154,7 +154,7 @@ class CatalogController extends Controller{
       $entityManager->persist($product);
       $entityManager->flush();
       $this->addFlash('msg', 'Producto salvo com sucesso!');
-      return $this->render('accounts/admin.html.twig');
+      return $this->redirectToRoute('home');
     } catch (\Exception $e) {
       return new Response($e->getMessage());
     }
@@ -222,7 +222,7 @@ class CatalogController extends Controller{
       $entityManager = $this->getDoctrine()->getManager();
       $entityManager->flush();
       $this->addFlash('msg', 'As informações do produto foram atualizadas com sucesso!');
-      return $this->render('accounts/admin.html.twig');
+      return $this->redirectToRoute('home');
     } catch (\Exception $e) {
       return new Response($e->getMessage());
     }
