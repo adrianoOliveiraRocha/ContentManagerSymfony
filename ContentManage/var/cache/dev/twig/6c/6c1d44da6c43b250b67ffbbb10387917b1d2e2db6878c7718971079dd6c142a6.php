@@ -46,7 +46,37 @@ class __TwigTemplate_57bb35ec3abe3a2d9c4f1df87fe14d27554aff828aff019d23e3b369846
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "contentpage"));
 
         // line 4
-        echo "  <h3>Index content</h3>
+        echo "
+
+<div class=\"container-fluid\" style=\"margin-top: 2%\">
+\t\t<div class=\"container-fluid\">
+\t\t\t<h2>Noma da Categoria</h2>
+\t\t\t<div class=\"row\">
+\t\t\t\t<div class=\"col-sm-4\">
+\t\t\t\t\t<img 
+\t\t\t\t\tsrc=\"#\" 
+\t\t\t\t\talt=\"\" />
+\t\t\t\t\t<div>Nome</div>
+\t\t\t\t\t<div>Description</div>
+\t\t\t\t\t<div>Valor R\$ 789</div>
+\t\t\t\t\t<div>
+\t\t\t\t\t\tMarca: fulana
+\t\t\t\t\t</div>
+\t\t\t\t\t<div>
+\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\tColocar no Carrinho
+\t\t\t\t\t\t</a>
+\t\t\t\t\t</div>
+\t\t\t\t\t<p></p>
+\t\t\t\t</div>
+\t\t\t\t
+\t\t\t</div>
+
+\t\t\t
+\t\t</div>
+\t</div>
+
+  
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -84,8 +114,37 @@ class __TwigTemplate_57bb35ec3abe3a2d9c4f1df87fe14d27554aff828aff019d23e3b369846
         return new Twig_Source("{% extends 'base.html.twig' %}
 
 {% block contentpage %}
-  <h3>Index content</h3>
-{% endblock %}
-", "default/index.html.twig", "/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/app/Resources/views/default/index.html.twig");
+
+
+<div class=\"container-fluid\" style=\"margin-top: 2%\">
+\t\t<div class=\"container-fluid\">
+\t\t\t<h2>Noma da Categoria</h2>
+\t\t\t<div class=\"row\">
+\t\t\t\t<div class=\"col-sm-4\">
+\t\t\t\t\t<img 
+\t\t\t\t\tsrc=\"#\" 
+\t\t\t\t\talt=\"\" />
+\t\t\t\t\t<div>Nome</div>
+\t\t\t\t\t<div>Description</div>
+\t\t\t\t\t<div>Valor R\$ 789</div>
+\t\t\t\t\t<div>
+\t\t\t\t\t\tMarca: fulana
+\t\t\t\t\t</div>
+\t\t\t\t\t<div>
+\t\t\t\t\t\t<a href=\"#\">
+\t\t\t\t\t\tColocar no Carrinho
+\t\t\t\t\t\t</a>
+\t\t\t\t\t</div>
+\t\t\t\t\t<p></p>
+\t\t\t\t</div>
+\t\t\t\t
+\t\t\t</div>
+
+\t\t\t
+\t\t</div>
+\t</div>
+
+  
+{% endblock %}", "default/index.html.twig", "/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/app/Resources/views/default/index.html.twig");
     }
 }

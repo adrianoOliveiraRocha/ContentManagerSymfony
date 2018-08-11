@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\Category;
 
 class DefaultController extends Controller
 {
@@ -15,6 +16,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $repository = $this->getDoctrine()->getRepository(Category::class);
+        $categories = $repository->findAll();
+        $repository = $this->getDoctrine()->getRepository(Product::class);
+        $products = $repository->findAll();
+        
         return $this->render('default/index.html.twig', []);
     }
 
