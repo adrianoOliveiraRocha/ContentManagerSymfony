@@ -12,7 +12,7 @@
 				<div class="col-sm-4">
 					<img 
 					src="{{ asset('uploads/images/thumb/') }}{{ product.image }}" 
-					alt="" />
+					alt="imagem do produto" />
 					<div>{{ product.name }}</div>
 					<div>{{ product.description }}</div>
 					<div>
@@ -24,7 +24,12 @@
 				</div>
 				{% endfor %}
 			</div>
-						
+			
+			{# display navigation #}
+			<div class="navigation">
+			    {{ knp_pagination_render(products) }}
+			</div>
+
 		</div>
 	</div>
 
