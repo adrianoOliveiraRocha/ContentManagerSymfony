@@ -25,9 +25,6 @@ class UserController extends Controller
       $repository = $this->getDoctrine()->getRepository(User::class);
       $user = $repository->findOneByEmail($email);
 
-      // $msg = "email: {$email}; password: {$password}";
-      // return new Response($msg);
-      // return new Response($user->getEmail());
       if ($user) { // this user exists?
         if ($user->getPassword() == $password) { //test the password
           $session->set('user', [
@@ -35,7 +32,8 @@ class UserController extends Controller
             'email' => $user->getEmail(),
             'password' => $user->getPassword(),
           ]);
-          return $this->render('accounts/admin.html.twig', []);
+
+          return $this->redirectToRoute('home');
 
         } else {
           $this->addFlash('msg', 'Senha incorreta!');
