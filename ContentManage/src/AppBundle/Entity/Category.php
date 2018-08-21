@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="category")
  */
 class Category{
+
+
   /**
    * @ORM\Column(type="integer")
    * @ORM\Id

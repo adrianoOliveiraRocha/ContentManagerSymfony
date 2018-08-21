@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>{% block title %}Sistema Gráfica{% endblock %}</title>
-    {% block stylesheets %}
 
+  <head>
+    <meta charset="UTF-8"/>
+
+    <title>{% block title %}Sistema Gráfica{% endblock %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link rel="stylesheet" type="text/css"
       href="{{ asset('bootstrap/bootstrap.min.css') }}">
@@ -13,10 +15,34 @@
 
     <script src="{{ asset('bootstrap/popper.min.js') }}"></script>
     <script src="{{ asset('bootstrap/bootstrap.min.js') }}"></script>
+
+    <!-- DataTable -->
+    <link href="{{ asset('datatable/jquery.dataTables.css') }}" 
+    rel="stylesheet" type="text/css" />
+
+    <script src="{{ asset('datatable/jquery.js') }}"></script>
+
+    <script src="{{ asset('datatable/jquery.dataTables.js') }}"></script>
     
-    {% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <script type="text/javascript" language="javascript" class="init">
+      $(document).ready(function() {
+        $('#table').DataTable({
+          "language": {
+                "lengthMenu": "Exibindo _MENU_ registros por página",
+                "zeroRecords": "Nenhum registro encontrado - desculpe",
+                "info": "Exibindo a página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem registros disponíveis",
+                "infoFiltered": "(filtered from _MAX_ total records)"
+            },
+            "scrollX": true
+        });
+      } );
+    </script>
+    <!-- End DataTable -->
+
   </head>
+  
   <body>
     {% block generalcontent %}
     <div class="container-fluid">
@@ -43,6 +69,23 @@
            <li class="nav-item">
              <a class="nav-link" href="/contato">Contato</a>
            </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#"
+            id="navbardrop" data-toggle="dropdown">
+              Categorias
+            </a>
+            <div class="dropdown-menu">
+              {% for category in categories %}
+              <a class="dropdown-item"
+              href="/?id_category={{category.id}}" >
+                {{category.name}}
+              </a>
+              {% endfor %}
+              
+            </div>
+          </li>
+
            <li class="nav-item">
              <a class="nav-link" href="/login">Entrar</a>
            </li>
@@ -64,16 +107,7 @@
       {% endblock %}
 
 
-      {% block javascripts %}
-      <!-- jQuery library -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-      <!-- Popper JS -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-
-      <!-- Latest compiled JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-      {% endblock %}
+      
   </div>
   {% endblock %}
   </body>

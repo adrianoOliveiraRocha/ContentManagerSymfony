@@ -33,7 +33,7 @@ class CatalogController extends Controller{
       $entityManager->persist($category);
       $entityManager->flush();
       $this->addFlash('msg', 'Categoria salva com sucesso!');
-      return $this->render('accounts/admin.html.twig');
+      return $this->redirectToRoute('home');
     } catch (\Exception $e) {
       return new Response($e->getMessage());
     }
@@ -85,7 +85,7 @@ class CatalogController extends Controller{
       $entityManager->persist($category);
       $entityManager->flush();
       $this->addFlash('msg', 'Categoria editada com sucesso!');
-      return $this->render('accounts/admin.html.twig');
+      return $this->redirectToRoute('home');
     } catch (\Exception $e) {
       return new Response($e->getMessage());
     }
@@ -104,7 +104,7 @@ class CatalogController extends Controller{
       $entityManager->remove($category);
       $entityManager->flush();
       $this->addFlash('msg', 'Categoria deletada com sucesso!');
-      return $this->render('accounts/admin.html.twig');
+      return $this->redirectToRoute('home');
     } catch (\Exception $e) {
       return new Response($e->getMessage());
     }
@@ -241,7 +241,7 @@ class CatalogController extends Controller{
       $entityManager->remove($product);
       $entityManager->flush();
       $this->addFlash('msg', 'Produto deletado com sucesso!');
-      return $this->render('accounts/admin.html.twig');
+      return $this->redirectToRoute('home');
     } catch (\Exception $e) {
       return new Response($e->getMessage());
     }
@@ -263,7 +263,7 @@ class CatalogController extends Controller{
         $entityManager->persist($promotion);
         $entityManager->flush();
         $this->addFlash('msg', 'Promoção salva com sucesso!');
-        return $this->render('accounts/admin.html.twig');
+        return $this->redirectToRoute('home');
       } catch (\Exception $e) {
         return new Response($e->getMessage());
       }
@@ -309,7 +309,7 @@ class CatalogController extends Controller{
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->flush();
         $this->addFlash('msg', 'As informações da promoção foram atualizadas com sucesso!');
-        return $this->render('accounts/admin.html.twig');
+        return $this->redirectToRoute('home');
         } catch (\Exception $e) {
           return new Response($e->getMessage());
         }
@@ -336,7 +336,7 @@ class CatalogController extends Controller{
       $entityManager->remove($promotion);
       $entityManager->flush();
       $this->addFlash('msg', 'Promoção deletada com sucesso!');
-      return $this->render('accounts/admin.html.twig');
+      return $this->redirectToRoute('home');
     } catch (\Exception $e) {
       return new Response($e->getMessage());
     }

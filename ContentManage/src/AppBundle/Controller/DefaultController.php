@@ -16,6 +16,10 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        if (isset($_GET['id_category'])) {
+          echo $_GET['id_category'];
+        }
+
         $repository = $this->getDoctrine()->getRepository(Category::class);
         $categories = $repository->findAll();
         $repository = $this->getDoctrine()->getRepository(Product::class);
@@ -30,6 +34,8 @@ class DefaultController extends Controller
 
         return $this->render('default/index.html.twig', [
             'products' => $pagination,
+            'category_name' => 'Todas as Categorias',
+            'categories' => $categories,
         ]);
     }
 
