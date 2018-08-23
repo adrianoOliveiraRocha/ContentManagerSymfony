@@ -689,3 +689,13 @@ d39d20,127.0.0.1,GET,http://localhost:8000/contato,1535031164,,200
 18b19a,127.0.0.1,GET,http://localhost:8000/contato,1535032743,,200
 0bb149,127.0.0.1,GET,http://localhost:8000/contato,1535032779,,200
 c56f1e,127.0.0.1,GET,http://localhost:8000/contato,1535032817,,200
+5fa7a8,127.0.0.1,GET,http://localhost:8000/contato,1535039700,,200
+3ebfa3,127.0.0.1,GET,http://localhost:8000/sobre,1535039758,,200
+00767e,127.0.0.1,GET,http://localhost:8000/sobre,1535039853,,200
+6ead63,127.0.0.1,GET,http://localhost:8000/,1535039897,,200
+ddd65b,127.0.0.1,GET,http://localhost:8000/sobre,1535039921,,200
+9ea884,127.0.0.1,GET,http://localhost:8000/portfolio,1535039980,,200
+f93757,127.0.0.1,GET,http://localhost:8000/portfolio,1535040044,,200
+e812ad,127.0.0.1,GET,http://localhost:8000/teleentregas,1535040121,6b4bfc,200
+6b4bfc,127.0.0.1,GET,http://localhost:8000/teleentregas,1535040121,,404
+32d7e5,127.0.0.1,GET,http://localhost:8000/teleentregas,1535040171,,200

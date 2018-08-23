@@ -79,7 +79,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/tabelaentregas", name="tabelaentregas")
+     * @Route("/teleentregas", name="teleentregas")
      */
     public function deliveryAction(Request $request) {
       $repository = $this->getDoctrine()->getRepository(Category::class);

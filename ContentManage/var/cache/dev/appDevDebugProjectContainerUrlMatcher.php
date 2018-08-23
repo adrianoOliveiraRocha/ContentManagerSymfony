@@ -247,9 +247,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::portfolioAction',  '_route' => 'portfolio',);
         }
 
-        // tabelaentregas
-        if ('/tabelaentregas' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deliveryAction',  '_route' => 'tabelaentregas',);
+        // teleentregas
+        if ('/teleentregas' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deliveryAction',  '_route' => 'teleentregas',);
         }
 
         // table_detail
