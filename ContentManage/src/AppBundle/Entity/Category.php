@@ -11,6 +11,15 @@ class Category{
 
 
   /**
+  * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+  */
+  private $products;
+  public function __construct() {
+    $this->products = new ArrayCollection();
+  }
+
+
+  /**
    * @ORM\Column(type="integer")
    * @ORM\Id
    * @ORM\GeneratedValue(strategy="AUTO")
@@ -36,6 +45,10 @@ class Category{
 
   public function getName(){
     return $this->name;
+  }
+
+  public function getProducts(){
+    return $this->products;
   }
 
 }

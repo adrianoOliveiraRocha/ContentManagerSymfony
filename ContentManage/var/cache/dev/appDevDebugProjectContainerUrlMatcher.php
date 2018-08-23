@@ -171,9 +171,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // about
+        // sobre
         if ('/sobre' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::aboutAction',  '_route' => 'about',);
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::aboutAction',  '_route' => 'sobre',);
         }
 
         if (0 === strpos($pathinfo, '/edit_')) {
@@ -242,6 +242,21 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_homepage:
 
+        // portfolio
+        if ('/portfolio' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::portfolioAction',  '_route' => 'portfolio',);
+        }
+
+        // tabelaentregas
+        if ('/tabelaentregas' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deliveryAction',  '_route' => 'tabelaentregas',);
+        }
+
+        // table_detail
+        if ('/table_detail' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\TableController::tableDetail',  '_route' => 'table_detail',);
+        }
+
         // login
         if ('/login' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::loginAction',  '_route' => 'login',);
@@ -250,11 +265,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         // app_user_logout
         if ('/logout' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\UserController::logout',  '_route' => 'app_user_logout',);
-        }
-
-        // table_detail
-        if ('/table_detail' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\TableController::tableDetail',  '_route' => 'table_detail',);
         }
 
         // admin

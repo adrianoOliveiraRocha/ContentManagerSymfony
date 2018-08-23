@@ -29,3 +29,8 @@ pass variable to path:
 {{ path('edit_category', {'id': category.id, 'name': category.name}) }}
 
 This resolves various errors: sudo apt-get remove php7.2-snmp
+
+acessar atrativa via FTP
+host: ftp.atrativapropaganda.com.br
+user: atrat743
+pass: 97k0cOq3Th

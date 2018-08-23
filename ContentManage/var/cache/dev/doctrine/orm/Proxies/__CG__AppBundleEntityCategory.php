@@ -64,10 +64,10 @@ class Category extends \AppBundle\Entity\Category implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Category' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Category' . "\0" . 'name'];
+            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Category' . "\0" . 'products', '' . "\0" . 'AppBundle\\Entity\\Category' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Category' . "\0" . 'name'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Category' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Category' . "\0" . 'name'];
+        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\Category' . "\0" . 'products', '' . "\0" . 'AppBundle\\Entity\\Category' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\Category' . "\0" . 'name'];
     }
 
     /**
@@ -219,6 +219,17 @@ class Category extends \AppBundle\Entity\Category implements \Doctrine\ORM\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
 
         return parent::getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getProducts()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProducts', []);
+
+        return parent::getProducts();
     }
 
 }
