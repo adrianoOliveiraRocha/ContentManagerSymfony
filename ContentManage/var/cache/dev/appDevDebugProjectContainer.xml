@@ -111,7 +111,7 @@
     <parameter key="mailer_password">null</parameter>
     <parameter key="secret">d21d76bf7f497263bbcdb9fe6667b0b6d44d1648</parameter>
     <parameter key="locale">en</parameter>
-    <parameter key="fragment.renderer.hinclude.global_template"></parameter>
+    <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">d21d76bf7f497263bbcdb9fe6667b0b6d44d1648</parameter>
     <parameter key="kernel.http_method_override">true</parameter>
@@ -132,6 +132,14 @@
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
     <parameter key="asset.request_context.base_path"></parameter>
     <parameter key="asset.request_context.secure">false</parameter>
+    <parameter key="templating.loader.cache.path">null</parameter>
+    <parameter key="templating.engines" type="collection">
+      <parameter>twig</parameter>
+      <parameter>php</parameter>
+    </parameter>
+    <parameter key="templating.helper.form.resources" type="collection">
+      <parameter>FrameworkBundle:Form</parameter>
+    </parameter>
     <parameter key="validator.mapping.cache.prefix"></parameter>
     <parameter key="validator.mapping.cache.file">/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/var/cache/dev/validation.php</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
@@ -336,6 +344,7 @@
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="knp_paginator.class">Knp\Component\Pager\Paginator</parameter>
     <parameter key="knp_paginator.helper.processor.class">Knp\Bundle\PaginatorBundle\Helper\Processor</parameter>
+    <parameter key="knp_paginator.templating.helper.pagination.class">Knp\Bundle\PaginatorBundle\Templating\PaginationHelper</parameter>
     <parameter key="knp_paginator.template.pagination">@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig</parameter>
     <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
     <parameter key="knp_paginator.template.sortable">@KnpPaginator/Pagination/sortable_link.html.twig</parameter>
@@ -650,7 +659,7 @@
       </argument>
     </service>
     <service id="fragment.handler" class="Symfony\Component\HttpKernel\DependencyInjection\LazyLoadingFragmentHandler">
-      <argument type="service" id="service_locator.w7xlwgx"/>
+      <argument type="service" id="service_locator.o0cobhk"/>
       <argument type="service" id="request_stack"/>
       <argument>true</argument>
     </service>
@@ -664,9 +673,9 @@
     </service>
     <service id="fragment.renderer.hinclude" class="Symfony\Component\HttpKernel\Fragment\HIncludeFragmentRenderer">
       <tag name="kernel.fragment_renderer" alias="hinclude"/>
-      <argument type="service" id="twig"/>
+      <argument type="service" id="templating.engine.delegating"/>
       <argument type="service" id="uri_signer"/>
-      <argument></argument>
+      <argument>null</argument>
       <call method="setFragmentPath">
         <argument>/_fragment</argument>
       </call>
@@ -1220,6 +1229,148 @@
       <argument></argument>
       <argument type="service" id="assets.empty_version_strategy"/>
       <argument type="service" id="assets.context"/>
+    </service>
+    <service id="templating.engine.delegating" class="Symfony\Bundle\FrameworkBundle\Templating\DelegatingEngine" public="false">
+      <argument type="service" id="service_container"/>
+      <argument type="collection"/>
+      <call method="addEngine">
+        <argument type="service" id="templating.engine.twig"/>
+      </call>
+      <call method="addEngine">
+        <argument type="service" id="templating.engine.php"/>
+      </call>
+    </service>
+    <service id="templating.name_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateNameParser">
+      <argument type="service" id="kernel"/>
+    </service>
+    <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
+    <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
+      <argument type="service" id="file_locator"/>
+      <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/var/cache/dev</argument>
+    </service>
+    <service id="templating.finder" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
+      <argument type="service" id="kernel"/>
+      <argument type="service" id="templating.filename_parser"/>
+      <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/app/Resources</argument>
+    </service>
+    <service id="templating.cache_warmer.template_paths" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer" public="false">
+      <tag name="kernel.cache_warmer" priority="20"/>
+      <argument type="service" id="templating.finder"/>
+      <argument type="service" id="templating.locator"/>
+    </service>
+    <service id="templating.loader.filesystem" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\FilesystemLoader" public="false">
+      <argument type="service" id="templating.locator"/>
+    </service>
+    <service id="templating.loader.cache" class="Symfony\Component\Templating\Loader\CacheLoader" public="false">
+      <tag name="monolog.logger" channel="templating"/>
+      <argument type="service" id="templating.loader.wrapped"/>
+      <argument>null</argument>
+      <call method="setLogger">
+        <argument type="service" id="monolog.logger.templating" on-invalid="ignore"/>
+      </call>
+    </service>
+    <service id="templating.loader.chain" class="Symfony\Component\Templating\Loader\ChainLoader" public="false">
+      <tag name="monolog.logger" channel="templating"/>
+      <call method="setLogger">
+        <argument type="service" id="monolog.logger.templating" on-invalid="ignore"/>
+      </call>
+    </service>
+    <service id="templating.engine.php" class="Symfony\Bundle\FrameworkBundle\Templating\TimedPhpEngine" public="false">
+      <argument type="service" id="templating.name_parser"/>
+      <argument type="service" id="templating.engine.php.helpers_locator"/>
+      <argument type="service" id="templating.loader.filesystem"/>
+      <argument type="service" id="debug.stopwatch"/>
+      <argument type="service" id="templating.globals"/>
+      <call method="setCharset">
+        <argument>UTF-8</argument>
+      </call>
+      <call method="setHelpers">
+        <argument type="collection">
+          <argument key="slots">templating.helper.slots</argument>
+          <argument key="request">templating.helper.request</argument>
+          <argument key="session">templating.helper.session</argument>
+          <argument key="router">templating.helper.router</argument>
+          <argument key="assets">templating.helper.assets</argument>
+          <argument key="actions">templating.helper.actions</argument>
+          <argument key="code">templating.helper.code</argument>
+          <argument key="translator">templating.helper.translator</argument>
+          <argument key="form">templating.helper.form</argument>
+          <argument key="stopwatch">templating.helper.stopwatch</argument>
+          <argument key="logout_url">templating.helper.logout_url</argument>
+          <argument key="security">templating.helper.security</argument>
+          <argument key="knp_pagination">knp_paginator.templating.helper.pagination</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="templating.engine.php.helpers_locator" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="knp_paginator.templating.helper.pagination" type="service" id="knp_paginator.templating.helper.pagination"/>
+        <argument key="templating.helper.actions" type="service" id="templating.helper.actions"/>
+        <argument key="templating.helper.assets" type="service" id="templating.helper.assets"/>
+        <argument key="templating.helper.code" type="service" id="templating.helper.code"/>
+        <argument key="templating.helper.form" type="service" id="templating.helper.form"/>
+        <argument key="templating.helper.logout_url" type="service" id="templating.helper.logout_url"/>
+        <argument key="templating.helper.request" type="service" id="templating.helper.request"/>
+        <argument key="templating.helper.router" type="service" id="templating.helper.router"/>
+        <argument key="templating.helper.security" type="service" id="templating.helper.security"/>
+        <argument key="templating.helper.session" type="service" id="templating.helper.session"/>
+        <argument key="templating.helper.slots" type="service" id="templating.helper.slots"/>
+        <argument key="templating.helper.stopwatch" type="service" id="templating.helper.stopwatch"/>
+        <argument key="templating.helper.translator" type="service" id="templating.helper.translator"/>
+      </argument>
+    </service>
+    <service id="templating.helper.slots" class="Symfony\Component\Templating\Helper\SlotsHelper">
+      <tag name="templating.helper" alias="slots"/>
+    </service>
+    <service id="templating.helper.request" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\RequestHelper">
+      <tag name="templating.helper" alias="request"/>
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="templating.helper.session" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\SessionHelper">
+      <tag name="templating.helper" alias="session"/>
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="templating.helper.router" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\RouterHelper">
+      <tag name="templating.helper" alias="router"/>
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="templating.helper.assets" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper">
+      <tag name="templating.helper" alias="assets"/>
+      <argument type="service" id="assets.packages"/>
+    </service>
+    <service id="templating.helper.actions" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\ActionsHelper">
+      <tag name="templating.helper" alias="actions"/>
+      <argument type="service" id="fragment.handler"/>
+    </service>
+    <service id="templating.helper.code" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper">
+      <tag name="templating.helper" alias="code"/>
+      <argument type="service" id="debug.file_link_formatter"/>
+      <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage</argument>
+      <argument>UTF-8</argument>
+    </service>
+    <service id="templating.helper.translator" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\TranslatorHelper">
+      <tag name="templating.helper" alias="translator"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="templating.helper.form" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper">
+      <tag name="templating.helper" alias="form"/>
+      <argument type="service" id="templating.form.renderer"/>
+    </service>
+    <service id="templating.helper.stopwatch" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\StopwatchHelper">
+      <tag name="templating.helper" alias="stopwatch"/>
+      <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
+    </service>
+    <service id="templating.form.engine" class="Symfony\Component\Form\Extension\Templating\TemplatingRendererEngine" public="false">
+      <argument type="service" id="templating.engine.php"/>
+      <argument>%templating.helper.form.resources%</argument>
+    </service>
+    <service id="templating.form.renderer" class="Symfony\Component\Form\FormRenderer" public="false">
+      <argument type="service" id="templating.form.engine"/>
+      <argument type="service" id="security.csrf.token_manager" on-invalid="null"/>
+    </service>
+    <service id="templating.globals" class="Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables">
+      <argument type="service" id="service_container"/>
     </service>
     <service id="2_ApcCache~erbbaog" class="Doctrine\Common\Cache\ApcCache" public="false">
       <call method="setNamespace">
@@ -2613,7 +2764,7 @@
     </service>
     <service id="Symfony\Bundle\FrameworkBundle\Controller\TemplateController" class="Symfony\Bundle\FrameworkBundle\Controller\TemplateController" public="true">
       <argument type="service" id="twig" on-invalid="ignore"/>
-      <argument>null</argument>
+      <argument type="service" id="templating.engine.delegating" on-invalid="ignore"/>
     </service>
     <service id="routing.loader.annotation" class="Symfony\Bundle\FrameworkBundle\Routing\AnnotatedRouteControllerLoader" public="false">
       <tag name="routing.loader" priority="-10"/>
@@ -3226,7 +3377,7 @@
       </call>
     </service>
     <service id="twig" class="Twig\Environment" public="true">
-      <argument type="service" id="twig.loader.native_filesystem"/>
+      <argument type="service" id="twig.loader.filesystem"/>
       <argument type="collection">
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
@@ -3328,7 +3479,7 @@
       <tag name="kernel.cache_warmer"/>
       <tag name="container.service_subscriber" id="twig"/>
       <argument type="service" id="service_locator.c7_qahl.twig.cache_warmer"/>
-      <argument>null</argument>
+      <argument type="service" id="templating.finder" on-invalid="ignore"/>
       <argument type="collection">
         <argument key="/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form">null</argument>
       </argument>
@@ -3347,7 +3498,6 @@
       <argument type="service" id="twig.template_iterator"/>
     </service>
     <service id="twig.loader.native_filesystem" class="Twig\Loader\FilesystemLoader" public="false">
-      <tag name="twig.loader"/>
       <argument type="collection"/>
       <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage</argument>
       <call method="addPath">
@@ -3523,6 +3673,87 @@
       <tag name="twig.runtime"/>
       <argument type="service" id="twig.form.engine"/>
       <argument type="service" id="security.csrf.token_manager" on-invalid="null"/>
+    </service>
+    <service id="twig.loader.filesystem" class="Symfony\Bundle\TwigBundle\Loader\FilesystemLoader" public="false">
+      <tag name="twig.loader"/>
+      <argument type="service" id="templating.locator"/>
+      <argument type="service" id="templating.name_parser"/>
+      <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage</argument>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views</argument>
+        <argument>Framework</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views</argument>
+        <argument>!Framework</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views</argument>
+        <argument>Security</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views</argument>
+        <argument>!Security</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views</argument>
+        <argument>Twig</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views</argument>
+        <argument>!Twig</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/swiftmailer-bundle/Resources/views</argument>
+        <argument>Swiftmailer</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/swiftmailer-bundle/Resources/views</argument>
+        <argument>!Swiftmailer</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/doctrine/doctrine-bundle/Resources/views</argument>
+        <argument>Doctrine</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/doctrine/doctrine-bundle/Resources/views</argument>
+        <argument>!Doctrine</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>!KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
+        <argument>Debug</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
+        <argument>!Debug</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
+        <argument>WebProfiler</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
+        <argument>!WebProfiler</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/app/Resources/views</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/adriano/PHP/projects/ContentManagerSymfony/ContentManage/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
+      </call>
+    </service>
+    <service id="templating.engine.twig" class="Symfony\Bundle\TwigBundle\TwigEngine" public="false">
+      <argument type="service" id="twig"/>
+      <argument type="service" id="templating.name_parser"/>
+      <argument type="service" id="templating.locator"/>
     </service>
     <service id="twig.command.debug" class="Symfony\Bridge\Twig\Command\DebugCommand" public="false">
       <tag name="console.command" command="debug:twig"/>
@@ -4192,6 +4423,11 @@
       <tag name="twig.extension"/>
       <argument type="service" id="knp_paginator.helper.processor"/>
     </service>
+    <service id="knp_paginator.templating.helper.pagination" class="Knp\Bundle\PaginatorBundle\Templating\PaginationHelper">
+      <tag name="templating.helper" alias="knp_pagination"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
+      <argument type="service" id="templating.engine.php"/>
+    </service>
     <service id="twig.extension.dump" class="Symfony\Bridge\Twig\Extension\DumpExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="var_dumper.cloner"/>
@@ -4366,9 +4602,10 @@
         <argument key="translation.loader.yml" type="service" id="translation.loader.yml"/>
       </argument>
     </service>
-    <service id="service_locator.w7xlwgx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.o0cobhk" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="hinclude" type="service" id="fragment.renderer.hinclude"/>
         <argument key="inline" type="service" id="fragment.renderer.inline"/>
       </argument>
     </service>
@@ -4412,6 +4649,21 @@
     </service>
     <service id="monolog.logger.cache" class="Symfony\Bridge\Monolog\Logger">
       <argument>cache</argument>
+      <call method="pushProcessor">
+        <argument type="service" id="debug.log_processor"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.server_log"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.console"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.main"/>
+      </call>
+    </service>
+    <service id="monolog.logger.templating" class="Symfony\Bridge\Monolog\Logger">
+      <argument>templating</argument>
       <call method="pushProcessor">
         <argument type="service" id="debug.log_processor"/>
       </call>
@@ -4779,6 +5031,9 @@
     <service id="form.property_accessor" alias="property_accessor" public="false"/>
     <service id="form.choice_list_factory" alias="form.choice_list_factory.cached" public="false"/>
     <service id="Symfony\Component\Asset\Packages" alias="assets.packages" public="false"/>
+    <service id="templating.loader" alias="templating.loader.filesystem" public="true"/>
+    <service id="templating" alias="templating.engine.delegating" public="true"/>
+    <service id="debug.templating.engine.php" alias="templating.engine.php"/>
     <service id="Symfony\Component\Validator\Validator\ValidatorInterface" alias="debug.validator" public="false"/>
     <service id="validator.mapping.class_metadata_factory" alias="debug.validator" public="false"/>
     <service id="translator" alias="translator.data_collector" public="true"/>
@@ -4846,9 +5101,11 @@
     <service id="sensio_framework_extra.converter.doctrine.orm.expression_language" alias="sensio_framework_extra.converter.doctrine.orm.expression_language.default" public="false"/>
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default" public="false"/>
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
-    <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="twig.loader" alias="twig.loader.native_filesystem"/>
+    <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
+    <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
+    <service id="twig.loader" alias="twig.loader.filesystem"/>
     <service id="service_locator._fpuy7b" alias="2_ServiceLocator~kycglhz" public="false"/>
+    <service id="service_locator.oaq_knz" alias="templating.engine.php.helpers_locator" public="false"/>
     <service id="service_locator.ml7rum7" alias="1_ServiceLocator~yvmx45t" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.logging.inner" alias="translator.default" public="false"/>

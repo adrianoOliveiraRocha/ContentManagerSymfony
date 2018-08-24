@@ -141,9 +141,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::createNewProduct',  '_route' => 'create_newproduct',);
             }
 
-            // contact
+            // contato
             if ('/contato' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::contactAction',  '_route' => 'contact',);
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::contactAction',  '_route' => 'contato',);
             }
 
         }
@@ -242,19 +242,32 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_homepage:
 
+        // products
+        if ('/produtos' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::productsAction',  '_route' => 'products',);
+        }
+
         // portfolio
         if ('/portfolio' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::portfolioAction',  '_route' => 'portfolio',);
         }
 
-        // teleentregas
-        if ('/teleentregas' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deliveryAction',  '_route' => 'teleentregas',);
-        }
+        if (0 === strpos($pathinfo, '/t')) {
+            // test
+            if ('/test' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::testAction',  '_route' => 'test',);
+            }
 
-        // table_detail
-        if ('/table_detail' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\TableController::tableDetail',  '_route' => 'table_detail',);
+            // teleentregas
+            if ('/teleentregas' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deliveryAction',  '_route' => 'teleentregas',);
+            }
+
+            // table_detail
+            if ('/table_detail' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\TableController::tableDetail',  '_route' => 'table_detail',);
+            }
+
         }
 
         // login

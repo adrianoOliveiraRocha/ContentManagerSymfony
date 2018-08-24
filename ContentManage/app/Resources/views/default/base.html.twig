@@ -12,6 +12,7 @@
 	<!-- Estilo css -->
 	<link href="{{ asset('css/estilo.css') }}" rel="stylesheet" style="text.css">
 	<link href="{{ asset('css/fontello.css') }}" rel="stylesheet" style="text.css">
+
 	
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
@@ -21,6 +22,9 @@
 	(function(){ var widget_id = 'Pzg6FEUP4j';var d=document;var w=window;function l(){
 	var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
 	<!-- {/literal} END JIVOSITE CODE -->
+
+	<script type="text/javascript"
+	src="{{ asset('js/extra.js') }}"></script>
     
 </head>
 <body>
@@ -82,12 +86,12 @@
 		<div class="row">
 			<div class="col-md-12 menu_mob">
 				<p><span class="icon-menu"></span>MENU</p>
-				<p><a href="index.html">Início</a></p>
-				<p><a href="quemsomos.html">Quem Somos</a></p>
-				<p><a href="contato.html">Contato</a></p>
-				<p><a href="portfolio.html">Portfólio</a></p>
-				<p><a href="#videos">Vídeos</a></p>
-				<p><a href="#">Área Restrita</a></p>
+				<p><a href="{{ path('homepage') }}">Início</a></p>
+				<p><a href="{{ path('sobre') }}">Quem Somos</a></p>
+				<p><a href="{{ path('contato') }}">Contato</a></p>
+				<p><a href="{{ path('portfolio') }}">Portfólio</a></p>
+				<p><a href="{{ path('homepage') }}#videos">Vídeos</a></p>
+				<p><a href="{{ path('login') }}">Área Restrita</a></p>
 		
 			</div>
 		
