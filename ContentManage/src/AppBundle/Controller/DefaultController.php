@@ -43,7 +43,7 @@ class DefaultController extends Controller
           'products' => $pagination,
           'category_name' => $category_name,
           'categories' => $categories,
-
+          'test' => False,
       ]);
     }
 
@@ -52,7 +52,6 @@ class DefaultController extends Controller
      */
     public function productsAction(Request $request)
     {
-      
       $repository = $this->getDoctrine()->getRepository(Category::class);
       $categories = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(Product::class);
@@ -79,7 +78,7 @@ class DefaultController extends Controller
           'products' => $pagination,
           'category_name' => $category_name,
           'categories' => $categories,
-
+          'test' => False,
       ]);
     }
 

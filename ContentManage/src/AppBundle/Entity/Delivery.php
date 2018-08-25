@@ -4,9 +4,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="mytable")
+ * @ORM\Table(name="delivery")
  */
-class Table{
+class Delivery{
 
   /**
    * @ORM\Column(type="integer")
@@ -18,12 +18,12 @@ class Table{
   /**
    * @ORM\Column(type="string", length=500, nullable=true)
    */
-  private $description;
+  private $neighborhood;
 
     /**
-   * @ORM\Column(type="string", length=500)
+   * @ORM\Column(type="string", length=50)
    */
-  private $image;
+  private $value;
 
 
   public function setId($id){
@@ -34,20 +34,20 @@ class Table{
     return $this->id;
   }
 
-  public function setDescription($description){
-    $this->description = $description;
+  public function setNeighborhood($neighborhood){
+    $this->neighborhood = $neighborhood;
   }
 
-  public function getDescription(){
-    return $this->description;
+  public function getNeighborhood(){
+    return $this->neighborhood;
   }
 
-  public function setImage($image){
-    $this->image = $image;
+  public function setValue($value){
+    $this->value = $value;
   }
 
-  public function getImage(){
-    return $this->image;
+  public function getValue(){
+    return $this->value;
   }
 }
 
