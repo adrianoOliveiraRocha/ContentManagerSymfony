@@ -124,12 +124,12 @@
 			<div class="row">
 				<div class="col-md-12 menu_mob">
 					<p><span class="icon-menu"></span>MENU</p>
-					<p><a href="index.html">Início</a></p>
-					<p><a href="quemsomos.html">Quem Somos</a></p>
-					<p><a href="contato.html">Contato</a></p>
-					<p><a href="portfolio.html">Portfólio</a></p>
-					<p><a href="#videos">Vídeos</a></p>
-					<p><a href="#">Área Restrita</a></p>
+					<p><a href="{{ path('homepage') }}">Início</a></p>
+					<p><a href="{{ path('sobre') }}">Quem Somos</a></p>
+					<p><a href="{{ path('contato') }}">Contato</a></p>
+					<p><a href="{{ path('portfolio') }}">Portfólio</a></p>
+					<p><a href="{{ path('homepage') }}#videos">Vídeos</a></p>
+					<p><a href="{{ path('login') }}">Área Restrita</a></p>
 			
 				</div>
 			
@@ -197,9 +197,12 @@
 				
 				<div class="col-md-9">
 					<div class="titulo_categoria_tab">
-								<h1><span class="icon-check"></span>Cartões de Visita</h1>
+							<h1>
+								<span class="icon-check"></span>
+								{{ category_name }}
+							</h1>
 							
-						</div>
+					</div>
 
 					<div class="row">
 						{% if products %}

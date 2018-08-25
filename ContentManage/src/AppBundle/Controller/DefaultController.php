@@ -16,7 +16,14 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-      
+      if (isset($_GET['page'])) {
+        $page = (int) $_GET['page'];
+        if ($page >= 2) {
+          return $this->redirectToRoute("products", 
+            array('page' => $page));
+        }
+        return $this->redirectToRoute('products');
+      }
       $repository = $this->getDoctrine()->getRepository(Category::class);
       $categories = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(Product::class);
