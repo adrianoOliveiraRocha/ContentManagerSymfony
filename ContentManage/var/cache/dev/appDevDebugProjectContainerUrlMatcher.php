@@ -176,20 +176,38 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::aboutAction',  '_route' => 'sobre',);
         }
 
-        if (0 === strpos($pathinfo, '/edit_')) {
-            // edit_category
-            if ('/edit_category' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editCategoryAction',  '_route' => 'edit_category',);
+        if (0 === strpos($pathinfo, '/e')) {
+            if (0 === strpos($pathinfo, '/edit_')) {
+                // edit_category
+                if ('/edit_category' === $pathinfo) {
+                    return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editCategoryAction',  '_route' => 'edit_category',);
+                }
+
+                // edit_product
+                if ('/edit_product' === $pathinfo) {
+                    return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editProductAction',  '_route' => 'edit_product',);
+                }
+
+                // edit_promotion
+                if ('/edit_promotion' === $pathinfo) {
+                    return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editPromotion',  '_route' => 'edit_promotion',);
+                }
+
             }
 
-            // edit_product
-            if ('/edit_product' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editProductAction',  '_route' => 'edit_product',);
+            // edit_delivery
+            if ('/editar_entrega' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\DeliveryController::editAction',  '_route' => 'edit_delivery',);
             }
 
-            // edit_promotion
-            if ('/edit_promotion' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\CatalogController::editPromotion',  '_route' => 'edit_promotion',);
+            // new_delivery
+            if ('/entregas_novo' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\DeliveryController::newAction',  '_route' => 'new_delivery',);
+            }
+
+            // show_deliveries
+            if ('/exibir_entrega' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\DeliveryController::showAction',  '_route' => 'show_deliveries',);
             }
 
         }
