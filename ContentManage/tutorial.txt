@@ -34,3 +34,7 @@ acessar atrativa via FTP
 host: ftp.atrativapropaganda.com.br
 user: atrat743
 pass: 97k0cOq3Th
+
+Next step:
+take a care with objectType in default control. If no exists any
+object you will have a error 

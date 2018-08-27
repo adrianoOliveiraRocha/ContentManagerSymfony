@@ -134,20 +134,24 @@
 				</div>
 
 				<div class="row">
-					{% if objects %}
+					{% if objectType.value is defined %}
 
-					{% for product in objects %}
+					{% for object in objects %}
+					
 					<div class="col-md-4 produtos">
 
 						<div class="cubo_produto">
-							<img class="img-responsive" src="imagens_produtos/img_modelo.jpg">
-							<h3>1000 Cartões de visita - Couchê 250g - 4 x 1 Verniz total frente</h3>
+							<img class="img-responsive" 
+							src="{{ asset('uploads/images/') }}{{ object.image }}">
+							<h3>{{ object.description }}</h3>
 							<div class="cod_preco_prod" title="Nº Referência">
-								<p id="cod_prod">Ref: card01</p>
+								<p id="cod_prod">Ref: {{object.id}}</p>
 							
 							</div>
 							<div class="cod_preco_prod">
-								<p id="preco_prod">R$ 80,00</p>
+								<p id="preco_prod">
+									R$ {{ object.value }}
+								</p>
 							
 							</div>
 							<div class="btn_comprar">
@@ -164,7 +168,23 @@
 					{% endfor %}
 
 					{% else %}
-					Não há produtos dessa categoria
+						
+
+					{% for object in objects %}
+					
+					<div class="col-md-4 produtos">
+
+						<div class="cubo_produto">
+							<img class="img-responsive" 
+							src="{{ asset('uploads/images/') }}{{ object.image }}">
+							<h3>{{ object.description }}</h3>
+													
+						</div>
+						
+					</div>
+					{% endfor %}
+
+
 					{% endif %}
 
 				</div>

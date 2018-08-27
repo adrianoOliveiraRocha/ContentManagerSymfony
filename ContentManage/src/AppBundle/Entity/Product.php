@@ -17,7 +17,7 @@ class Product{
   /**
    * @ORM\Column(type="string", length=200)
    */
-  private $name;
+  private $value;
 
   /**
    * @ORM\Column(type="text", length=1000)
@@ -43,12 +43,12 @@ class Product{
     return $this->id;
   }
 
-  public function setName($name){
-    $this->name = $name;
+  public function setValue($value){
+    $this->value = $value;
   }
 
-  public function getName(){
-    return $this->name;
+  public function getValue(){
+    return $this->value;
   }
 
   public function setDescription($description){

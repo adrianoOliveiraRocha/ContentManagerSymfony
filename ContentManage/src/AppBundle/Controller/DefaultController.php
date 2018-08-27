@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Category;
-use AppBundle\Entity\Delivery;
+use AppBundle\Entity\Promotion;
 
 class DefaultController extends Controller
 {
@@ -26,15 +26,15 @@ class DefaultController extends Controller
       $repositoryCate = $this->getDoctrine()->getRepository(Category::class);
       $categories = $repositoryCate->findAll();
       $products = Null;
-      $deliveries = Null;
+      $promotions = Null;
       $objects = Null;
       
       if (isset($_GET['id_category'])) {
         $nav = 'div_prod';
 
         if ($_GET['id_category'] == 'promo') {
-          $repositoryDel = $this->getDoctrine()->getRepository(Delivery::class);
-          $deliveries = $repositoryDel->findAll();
+          $repositoryProm = $this->getDoctrine()->getRepository(Promotion::class);
+          $promotions = $repositoryProm->findAll();
           $category_name = 'Promoções';
 
         }
@@ -60,8 +60,8 @@ class DefaultController extends Controller
 
       if ($products) {
         $objects = $products;
-      } elseif ($deliveries) {
-        $objects = $deliveries;
+      } elseif ($promotions) {
+        $objects = $promotions;
       }
 
       $paginator  = $this->get('knp_paginator');
@@ -76,7 +76,13 @@ class DefaultController extends Controller
           'category_name' => $category_name,
           'categories' => $categories,
           'nav' => $nav,
+          'objectType' => $objects[0],
       ]);
+
+      // return $this->render('default/test.html.twig', [
+      //     'objectType' => $objects[0],
+      // ]);
+
     }
 
     /**

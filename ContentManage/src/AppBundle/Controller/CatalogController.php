@@ -130,7 +130,7 @@ class CatalogController extends Controller{
    */
   public function createNewProduct(Request $request){
     
-    $productName = $request->request->get('name');
+    $valueName = $request->request->get('value');
     $productDescription = $request->request->get('description');
     
     if ($_FILES['image']) {
@@ -144,7 +144,7 @@ class CatalogController extends Controller{
     $imageName = Utils::uploadImage($productImage);
 
     $product = new Product();
-    $product->setName($productName);
+    $product->setValue($productName);
     $product->setDescription($productDescription);
     $product->setCategory($category);
     $product->setImage($imageName);
@@ -214,7 +214,7 @@ class CatalogController extends Controller{
     $repository = $this->getDoctrine()->getRepository(Category::class);
     $category = $repository->findOneById($idCategory);
     
-    $product->setName($request->request->get('name'));
+    $product->setValue($request->request->get('value'));
     $product->setDescription($request->request->get('description'));
     $product->setCategory($category);
     
