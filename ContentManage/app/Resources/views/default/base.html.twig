@@ -25,10 +25,24 @@
 
 	<script type="text/javascript"
 	src="{{ asset('js/extra.js') }}"></script>
+
+	<script type="text/javascript">
+		function nav(url){
+			window.self.location.href = "#" + url;
+		}
+		
+	</script>
     
 </head>
-<body onload="#divisao_produtos">
 
+<body 
+	{% if nav is defined %}
+		{% if nav == 'div_prod' %} 
+			onload="nav('divisao_produtos')"; 
+		{% elseif nav == 'deliverytable' %}
+			onload="nav('deliverytable')"; 
+		{% endif %}
+	{% endif %}>
 <!-- esse bloco existe em todas as páginas -->
 {% block topo %}
 <section id="topo">

@@ -260,32 +260,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_homepage:
 
-        // products
-        if ('/produtos' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::productsAction',  '_route' => 'products',);
-        }
-
         // portfolio
         if ('/portfolio' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::portfolioAction',  '_route' => 'portfolio',);
         }
 
-        if (0 === strpos($pathinfo, '/t')) {
-            // test
-            if ('/test' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::testAction',  '_route' => 'test',);
-            }
+        // deliverytable
+        if ('/tabelaentregas' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deliveryAction',  '_route' => 'deliverytable',);
+        }
 
-            // teleentregas
-            if ('/teleentregas' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deliveryAction',  '_route' => 'teleentregas',);
-            }
-
-            // table_detail
-            if ('/table_detail' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\TableController::tableDetail',  '_route' => 'table_detail',);
-            }
-
+        // table_detail
+        if ('/table_detail' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\TableController::tableDetail',  '_route' => 'table_detail',);
         }
 
         // login

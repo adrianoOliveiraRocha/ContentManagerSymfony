@@ -58,12 +58,38 @@ class DeliveryController extends Controller
      * @Route("editar_entrega", name="edit_delivery")
      */
 	public function editAction(Request $request){
-		$id = $request->query->get('id');
 		$repository = $this->getDoctrine()->getRepository(Delivery::class);
-		$delivery = $repository->findOneById($id);
-
-		return $this->render('delivery/edit_delivery.html.twig', array(
-	      'delivery' => $delivery,
-	    ));	
+		
+		if (isset($_GET['id'])) {
+			$delivery = $repository->findOneById($_GET['id']);
+			return $this->render('delivery/edit_delivery.html.twig', array(
+		      'delivery' => $delivery,
+		    ));
+		} elseif ($_POST['id']) {
+			$delivery = $repository->findOneById($_POST['id']);
+			$changed = False;
+			if ($_POST['neighborhood'] != $delivery->getNeighborhood()) {
+				$delivery->setNeighborhood($_POST['neighborhood']);
+				$changed = True;
+			}
+			if ($_POST['preice'] != $delivery->getValue()) {
+				$delivery->setValue($_POST['preice']);
+				$changed = True;
+			}
+			if ($changed == True) {
+				try {
+			      $entityManager = $this->getDoctrine()->getManager();
+			      $entityManager->persist($delivery);
+			      $entityManager->flush();
+			      $this->addFlash('msg', 'Entrega editada com sucesso!');
+			      return $this->redirectToRoute('home');
+			    } catch (\Exception $e) {
+			      return new Response($e->getMessage());
+			    }
+			}
+			$this->addFlash('msg', 'Não houve alterações!');
+			return $this->redirectToRoute('home');
+		}
 	}
+
 }

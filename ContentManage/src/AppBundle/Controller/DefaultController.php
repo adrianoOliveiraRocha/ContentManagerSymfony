@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Category;
+use AppBundle\Entity\Delivery;
 
 class DefaultController extends Controller
 {
@@ -16,76 +17,65 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+      $nav = '';
       if (isset($_GET['page'])) {
-        $page = (int) $_GET['page'];
-        if ($page >= 2) {
-          return $this->redirectToRoute("products", 
-            array('page' => $page));
-        }
-        return $this->redirectToRoute('products');
+        $nav = 'div_prod';
+        
       }
-      $repository = $this->getDoctrine()->getRepository(Category::class);
-      $categories = $repository->findAll();
-      $repository = $this->getDoctrine()->getRepository(Product::class);
+      
+      $repositoryCate = $this->getDoctrine()->getRepository(Category::class);
+      $categories = $repositoryCate->findAll();
       $products = Null;
-      $category_name = "Todas as Categorias";
+      $deliveries = Null;
+      $objects = Null;
+      
       if (isset($_GET['id_category'])) {
-        $category = $this->getDoctrine()
-        ->getRepository(Category::class)
-        ->find($_GET['id_category']);
-        $products = $category->getProducts();
-        $category_name = $category->getName();
-      } else {
-        $products = $repository->findAll();
+        $nav = 'div_prod';
+
+        if ($_GET['id_category'] == 'promo') {
+          $repositoryDel = $this->getDoctrine()->getRepository(Delivery::class);
+          $deliveries = $repositoryDel->findAll();
+          $category_name = 'Promoções';
+
+        }
+        
+        elseif ($_GET['id_category'] == 0) {
+          $repositoryProd = $this->getDoctrine()->getRepository(Product::class);
+          $products = $repositoryProd->findAll();
+          $category_name = "Todas as Categorias";
+        } else {
+            $category = $repositoryCate
+            ->find($_GET['id_category']);
+            $products = $category->getProducts();
+            $category_name = $category->getName();  
+          }
+          
+      } else { //$_GET['id_category'] not exists
+        $repositoryCate = $this->getDoctrine()->getRepository(Category::class);
+        $categories = $repositoryCate->findAll();
+        $repositoryProd = $this->getDoctrine()->getRepository(Product::class);
+        $products = $repositoryProd->findAll();
+        $category_name = "Todas as Categorias";
+      }
+
+      if ($products) {
+        $objects = $products;
+      } elseif ($deliveries) {
+        $objects = $deliveries;
       }
 
       $paginator  = $this->get('knp_paginator');
       $pagination = $paginator->paginate(
-          $products, 
+          $objects, 
           $request->query->getInt('page', 1)/*page number*/,
           6 /*limit per page*/
       );
 
       return $this->render('default/index.html.twig', [
-          'products' => $pagination,
+          'objects' => $pagination,
           'category_name' => $category_name,
           'categories' => $categories,
-          'test' => False,
-      ]);
-    }
-
-    /**
-     * @Route("/produtos", name="products")
-     */
-    public function productsAction(Request $request)
-    {
-      $repository = $this->getDoctrine()->getRepository(Category::class);
-      $categories = $repository->findAll();
-      $repository = $this->getDoctrine()->getRepository(Product::class);
-      $products = Null;
-      $category_name = "Todas as Categorias";
-      if (isset($_GET['id_category'])) {
-        $category = $this->getDoctrine()
-        ->getRepository(Category::class)
-        ->find($_GET['id_category']);
-        $products = $category->getProducts();
-        $category_name = $category->getName();
-      } else {
-        $products = $repository->findAll();
-      }
-
-      $paginator  = $this->get('knp_paginator');
-      $pagination = $paginator->paginate(
-          $products, 
-          $request->query->getInt('page', 1)/*page number*/,
-          6 /*limit per page*/
-      );
-
-      return $this->render('default/produtos.html.twig', [
-          'products' => $pagination,
-          'category_name' => $category_name,
-          'categories' => $categories,
-          'test' => False,
+          'nav' => $nav,
       ]);
     }
 
@@ -97,14 +87,8 @@ class DefaultController extends Controller
       $categories = $repository->findAll();
       return $this->render('default/quemsomos.html.twig', [
         'categories' => $categories,
+        
       ]);
-    }
-
-    /**
-     * @Route("/test", name="test")
-     */
-    public function testAction(Request $request) {
-      return new Response('i am programer, i have life');
     }
 
     /**
@@ -115,6 +99,7 @@ class DefaultController extends Controller
       $categories = $repository->findAll();
       return $this->render('default/contato.html.twig', [
         'categories' => $categories,
+        
       ]);
     }
 
@@ -126,17 +111,22 @@ class DefaultController extends Controller
       $categories = $repository->findAll();
       return $this->render('default/portfolio.html.twig', [
         'categories' => $categories,
+        
       ]);
     }
 
     /**
-     * @Route("/teleentregas", name="teleentregas")
+     * @Route("/tabelaentregas", name="deliverytable")
      */
     public function deliveryAction(Request $request) {
-      $repository = $this->getDoctrine()->getRepository(Category::class);
-      $categories = $repository->findAll();
+      $repositoryCate = $this->getDoctrine()->getRepository(Category::class);
+      $categories = $repositoryCate->findAll();
+      $repositoryDel = $this->getDoctrine()->getRepository(Delivery::class);
+      $deliveries = $repositoryDel->findAll();
       return $this->render('default/tabelaentregas.html.twig', [
         'categories' => $categories,
+        'deliveries' => $deliveries,
+        'nav' => 'deliverytable',
       ]);
     }
 
@@ -154,6 +144,7 @@ class DefaultController extends Controller
         $products = $repository->findAll();
         return $this->render('accounts/admin.html.twig', array(
             'products' => $products,
+            
         ));
       }
 

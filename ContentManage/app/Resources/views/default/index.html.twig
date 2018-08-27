@@ -60,7 +60,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 btn_fretes">
-			<a class="img-responsive" href="tabelaentregas.html"><img class="zoom_in" src="imagens/btn_fretes.jpg"/></a>
+			<a class="img-responsive" href="{{path('deliverytable')}}">
+			<img class="zoom_in" src="imagens/btn_fretes.jpg"/></a>
 
 		</div>
 	
@@ -95,14 +96,22 @@
 				<nav>
 					<div  class="nav flex-column" id="nav-tab" role="tablist" aria-orientation="vertical">
 						<a class="nav-item nav-link active Tabs_produtos"  
-						href="{{ path('products') }}" 
+						href="{{ path('homepage') }}?id_category=0" 
 						role="tab" 
 						aria-controls="nav-home">
 							Todas as Categorias
 						</a>
+
+						<a class="nav-item nav-link active Tabs_produtos"  
+						href="{{ path('homepage') }}?id_category=promo" 
+						role="tab" 
+						aria-controls="nav-home">
+							Promoções
+						</a>
+
 						{% for category in categories %}
 						<a class="nav-item nav-link active Tabs_produtos"  
-						href="{{ path('products') }}?id_category={{category.id}}" 
+						href="{{ path('homepage') }}?id_category={{category.id}}" 
 						role="tab" 
 						aria-controls="nav-home">
 							{{ category.name }}
@@ -125,9 +134,9 @@
 				</div>
 
 				<div class="row">
-					{% if products %}
+					{% if objects %}
 
-					{% for product in products %}
+					{% for product in objects %}
 					<div class="col-md-4 produtos">
 
 						<div class="cubo_produto">
@@ -162,7 +171,7 @@
 				
 				{# display navigation #}
 				<div class="navigation">
-				    {{ knp_pagination_render(products) }}
+				    {{ knp_pagination_render(objects) }}
 				</div>
 
 			</div>

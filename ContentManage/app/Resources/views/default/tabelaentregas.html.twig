@@ -8,18 +8,26 @@
 
 {% block conteudo %}
 <div class="container">
-		<div class="row">
-			<div class="col-md-12 btn_youtube">
-				<img src="imagens/faixa_fretes.jpg"/>
-			
-			</div>
-			
-			<div class="col-md-12 img_quemsomos">
-				<img class="img-responsive" src="imagens/tabelaentregas.jpg"/>
-			
-			</div>
+	<div class="row">
+		<div class="col-md-12 btn_youtube" id='deliverytable'>
+			<img src="imagens/faixa_fretes.jpg"/>
 		
-		</div>	
+		</div>
+		
+		<div class="col-md-12 img_quemsomos">
+			<table class='table'>
+				{% for delivery in deliveries %}
+				<tr>
+					<td>{{ delivery.neighborhood }}</td>
+					<td>R$ {{ delivery.value }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		
+		</div>
 	
-	</div>
+	</div>	
+
+</div>
+
 {% endblock %}

@@ -16,6 +16,6 @@ if (!\class_exists(appDevDebugProjectContainer::class, false)) {
 
 return new \ContainerUqbriri\appDevDebugProjectContainer(array(
     'container.build_hash' => 'Uqbriri',
-    'container.build_id' => '19b683dd',
-    'container.build_time' => 1535198649,
+    'container.build_id' => '9f343a84',
+    'container.build_time' => 1535376768,
 ), __DIR__.\DIRECTORY_SEPARATOR.'ContainerUqbriri');
